@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>小動物頭像</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}" style="height: auto; min-height: 844px;">
+  <div style="padding: 22px 16px 6px; text-align: center;">
+    <h1 class="h2">所有可選的小動物</h1>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 8px; padding: 14px 16px 24px;">
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl mm"><i class="an an-mm"></i></span><span class="small bold">縵縵限定</span><span class="tiny muted">帶著蝴蝶結的兔兔</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a1"><i class="an an-crab"></i></span><span class="small bold">螃蟹</span><span class="tiny muted">crab</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a2"><i class="an an-duck"></i></span><span class="small bold">小鴨</span><span class="tiny muted">duck</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a3"><i class="an an-chick"></i></span><span class="small bold">小雞</span><span class="tiny muted">chick</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a4"><i class="an an-polarbear"></i></span><span class="small bold">北極熊</span><span class="tiny muted">polarbear</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a5"><i class="an an-cat"></i></span><span class="small bold">貓</span><span class="tiny muted">cat</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a6"><i class="an an-shark"></i></span><span class="small bold">鯊魚</span><span class="tiny muted">shark</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a7"><i class="an an-rabbit"></i></span><span class="small bold">兔子</span><span class="tiny muted">rabbit</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a1"><i class="an an-koala"></i></span><span class="small bold">無尾熊</span><span class="tiny muted">koala</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a2"><i class="an an-elephant"></i></span><span class="small bold">大象</span><span class="tiny muted">elephant</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a3"><i class="an an-dog"></i></span><span class="small bold">狗狗</span><span class="tiny muted">dog</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a4"><i class="an an-pig"></i></span><span class="small bold">小豬</span><span class="tiny muted">pig</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a5"><i class="an an-fish"></i></span><span class="small bold">小魚</span><span class="tiny muted">fish</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a6"><i class="an an-unicorn"></i></span><span class="small bold">獨角獸</span><span class="tiny muted">unicorn</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a7"><i class="an an-giraffe"></i></span><span class="small bold">長頸鹿</span><span class="tiny muted">giraffe</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a1"><i class="an an-tiger"></i></span><span class="small bold">老虎</span><span class="tiny muted">tiger</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a2"><i class="an an-whale"></i></span><span class="small bold">鯨魚</span><span class="tiny muted">whale</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a3"><i class="an an-bear"></i></span><span class="small bold">熊</span><span class="tiny muted">bear</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a4"><i class="an an-monkey"></i></span><span class="small bold">猴子</span><span class="tiny muted">monkey</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a5"><i class="an an-hamster"></i></span><span class="small bold">倉鼠</span><span class="tiny muted">hamster</span></div>
+      <div class="col" style="align-items: center; gap: 6px;"><span class="av xl a6"><i class="an an-frog"></i></span><span class="small bold">青蛙</span><span class="tiny muted">frog</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

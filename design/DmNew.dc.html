@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>兩個人第一次設定</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+  <div class="row gap8" style="padding: 12px 16px 0;">
+    <a class="btn-ico sm" href="DmEnter.dc.html" aria-label="回上一頁" style="text-decoration: none;"><span class="ico i-left"></span></a>
+    <span class="grow"></span>
+  </div>
+
+  <div class="col gap4" style="padding: 6px 20px 0;">
+    <h1 class="title" style="font-size: 24px;">只跟 縵 聊</h1>
+    <p class="p muted small">第一次來，先設定名字、頭像和你的數字</p>
+  </div>
+
+  <div class="col gap12" style="padding: 12px 16px 0;">
+    <div class="field">
+      <label class="label" for="nm">名字<span class="chip pink" style="height: 24px; font-size: 12px;">輸入自己的名字</span></label>
+      <input class="input" id="nm" value="小米" style="min-height: 48px;">
+      <span class="hint">1～20 字</span>
+    </div>
+
+    <div class="field">
+      <div class="label">頭像<span class="row gap6"><span class="av sm a1"><i class="an an-bear"></i></span><span class="tiny muted">目前</span></span></div>
+      <div class="row gap6" style="overflow-x: auto; padding: 4px 4px 6px; scrollbar-width: none;">
+        <button class="av-pick on" aria-label="小螃蟹"><span class="av sm a1"><i class="an an-crab"></i></span></button>
+        <button class="av-pick" aria-label="小鴨"><span class="av sm a2"><i class="an an-duck"></i></span></button>
+        <button class="av-pick" aria-label="小雞"><span class="av sm a3"><i class="an an-chick"></i></span></button>
+        <button class="av-pick" aria-label="北極熊"><span class="av sm a4"><i class="an an-polarbear"></i></span></button>
+        <button class="av-pick" aria-label="貓"><span class="av sm a5"><i class="an an-cat"></i></span></button>
+        <button class="av-pick" aria-label="鯊魚"><span class="av sm a6"><i class="an an-shark"></i></span></button>
+        <button class="av-pick" aria-label="兔子"><span class="av sm a7"><i class="an an-rabbit"></i></span></button>
+        <button class="av-pick" aria-label="無尾熊"><span class="av sm a1"><i class="an an-koala"></i></span></button>
+        <button class="av-pick" aria-label="大象"><span class="av sm a2"><i class="an an-elephant"></i></span></button>
+        <button class="av-pick" aria-label="狗狗"><span class="av sm a3"><i class="an an-dog"></i></span></button>
+        <button class="av-pick" aria-label="小豬"><span class="av sm a4"><i class="an an-pig"></i></span></button>
+        <button class="av-pick" aria-label="小魚"><span class="av sm a5"><i class="an an-fish"></i></span></button>
+        <button class="av-pick" aria-label="獨角獸"><span class="av sm a6"><i class="an an-unicorn"></i></span></button>
+        <button class="av-pick" aria-label="長頸鹿"><span class="av sm a7"><i class="an an-giraffe"></i></span></button>
+        <button class="av-pick" aria-label="老虎"><span class="av sm a1"><i class="an an-tiger"></i></span></button>
+        <button class="av-pick" aria-label="鯨魚"><span class="av sm a2"><i class="an an-whale"></i></span></button>
+        <button class="av-pick" aria-label="熊"><span class="av sm a3"><i class="an an-bear"></i></span></button>
+        <button class="av-pick" aria-label="猴子"><span class="av sm a4"><i class="an an-monkey"></i></span></button>
+        <button class="av-pick" aria-label="倉鼠"><span class="av sm a5"><i class="an an-hamster"></i></span></button>
+        <button class="av-pick" aria-label="青蛙"><span class="av sm a6"><i class="an an-frog"></i></span></button>
+      </div>
+      <div class="row gap6">
+        <a class="btn xs ghost grow" href="Cropper.dc.html" style="text-decoration: none;"><span class="ico sm i-image"></span>相簿</a>
+        <a class="btn xs ghost grow" href="Camera.dc.html" style="text-decoration: none;"><span class="ico sm i-camera"></span>拍照</a>
+        <button class="btn xs blue grow"><span class="ico sm i-users"></span>沿用群組的</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="label">數字有幾位？</span>
+      <div class="seg-tabs" role="group" aria-label="代碼長度">
+        <span class="seg-tab on">四位數</span>
+        <span class="seg-tab">六位數</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="code">你的數字<button class="link" style="min-height: 28px; padding: 0 2px; font-size: 13px;"><span class="ico sm i-eye" style="vertical-align: -3px;"></span> 顯示</button></label>
+      <input class="input err" id="code" type="password" value="1234" aria-describedby="code-err" style="letter-spacing: .3em; min-height: 48px;">
+      <span class="msg-err" id="code-err"><span class="ico sm i-info"></span>這組數字已經有人用了，換一組吧</span>
+      <span class="hint">用來日後換手機或清除資料後，找回你跟 縵 的對話。請選一組你記得住、別人猜不到的數字。</span>
+      <span class="tiny" style="font-weight: 700; color: var(--ink);">忘記數字又換了裝置，就找不回這個對話了</span>
+    </div>
+  </div>
+
+  <div class="grow"></div>
+  <div class="col gap4" style="padding: 0 16px 12px; align-items: center;">
+    <button class="btn block">開始聊天<span class="ico sm i-right"></span></button>
+    <a class="link" href="DmEnter.dc.html">我已經設定過了</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

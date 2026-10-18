@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>電腦：站長兩欄</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app wide theme-{{theme}}" style="flex-direction: row; gap: 20px; padding: 20px 24px; align-items: stretch;">
+
+  <aside class="col" style="width: 360px; flex: none; gap: 12px;" aria-label="對話列表">
+    <div class="tabs dm" role="tablist" aria-label="聊天室" style="margin: 0;">
+      <button class="tab-toggle open" aria-expanded="true" aria-label="收起"><span class="ico sm i-up"></span></button>
+      <button class="tab" role="tab" aria-selected="false"><span class="ico sm i-users"></span>好多人</button>
+      <button class="tab on dm" role="tab" aria-selected="true"><span class="ico sm i-lock"></span>兩個人<span class="count">6</span></button>
+    </div>
+    <div class="row gap8">
+      <div class="row gap8 input grow" style="min-height: 46px; padding: 0 14px;"><span class="ico sm i-search"></span><span class="muted" style="font-weight: 600;">用名字找對話</span></div>
+      <button class="btn-ico flat" aria-label="收起對話列表"><span class="ico i-left"></span></button>
+      <button class="btn-ico" aria-label="設定"><span class="ico i-sliders"></span></button>
+    </div>
+    <div class="col gap8" role="list">
+      <span class="pin-label"><span class="ico sm i-pin"></span>置頂</span>
+      <div class="dm-row sel" role="listitem">
+        <span class="av a1"><i class="an an-bear"></i></span>
+        <div class="col grow" style="min-width: 0;"><div class="row gap6"><b class="nowrap grow">小米</b><span class="ico sm i-pin" role="img" aria-label="已置頂"></span><span class="tiny muted">09:41</span></div><span class="small nowrap">今天可以聊聊嗎</span></div>
+        <span class="count">2</span>
+      </div>
+      <div class="dm-row" role="listitem">
+        <span class="av a7"><i class="an an-tiger"></i></span>
+        <div class="col grow" style="min-width: 0;"><div class="row gap6"><b class="nowrap grow">小雨</b><span class="ico sm i-pin" role="img" aria-label="已置頂"></span><span class="tiny muted">09:20</span></div><span class="small nowrap row gap6"><span class="ico sm i-whisper"></span>悄悄話</span></div>
+        <span class="count">3</span>
+      </div>
+      <div class="dm-row" role="listitem">
+        <span class="av a3"><i class="an an-koala"></i></span>
+        <div class="col grow" style="min-width: 0;"><div class="row gap6"><b class="nowrap grow">布朗</b><span class="ico sm i-pin" role="img" aria-label="已置頂"></span><span class="tiny muted">週二</span></div><span class="small nowrap muted">謝謝你！</span></div>
+      </div>
+      <span class="pin-label" style="padding-top: 8px;">其他對話</span>
+      <div class="dm-row" role="listitem">
+        <span class="av a4"><i class="an an-dog"></i></span>
+        <div class="col grow" style="min-width: 0;"><div class="row gap6"><b class="nowrap grow">阿凱</b><span class="tiny muted">昨天</span></div><span class="small nowrap row gap6"><span class="ico sm i-image"></span>圖片</span></div>
+        <span class="count">1</span>
+      </div>
+      <div class="dm-row blocked" role="listitem">
+        <span class="av a6" style="filter: grayscale(.6);"><i class="an an-frog"></i></span>
+        <div class="col grow" style="min-width: 0;"><div class="row gap6"><b class="nowrap grow">路人</b><span class="chip" style="height: 24px; font-size: 12px; background: #E3D2C2;"><span class="ico sm i-ban"></span>已封鎖</span></div></div>
+      </div>
+    </div>
+  </aside>
+
+  <section class="col grow" style="min-width: 0; border-radius: 30px; overflow: hidden; background: rgba(255, 253, 249, .6); border: 2px solid var(--line); box-shadow: var(--shadow);" aria-label="與小米的對話">
+    <div class="topbar dm">
+      <span class="av a1"><i class="an an-bear"></i></span>
+      <div class="col grow" style="min-width: 0;"><h1 class="h2" style="font-size: 20px;">小米</h1><span class="tiny bold">一對一對話</span></div>
+      <div class="tt mode" role="group" aria-label="聊天模式">
+      <button class="tt-pink on" aria-label="一般聊天" aria-pressed="true"><span class="icc sun-c"></span></button>
+      <button class="tt-blue" aria-label="悄悄話" aria-pressed="false"><span class="icc meteor-c"></span></button>
+    </div>
+      <button class="btn xs ghost"><span class="ico sm i-ban"></span>封鎖</button>
+      <button class="btn xs ghost"><span class="ico sm i-trash"></span>刪除整個對話</button>
+    </div>
+
+    <div class="msgs" style="justify-content: flex-end; padding: 14px 24px 8px; gap: 10px;">
+      <span class="sys date">今天</span>
+      <div class="msg">
+        <span class="av sm a1"><i class="an an-bear"></i></span>
+        <div class="stack" style="max-width: 60%;">
+          <div class="meta"><b>小米</b><span>09:41</span></div>
+          <div class="bubble">今天可以聊聊嗎</div>
+          <div class="rx-row"><span class="rx-stack" role="group" aria-label="表情回應"><button class="rxe" aria-label="🥺 1 人"><span class="e">🥺</span></button></span><button class="rx-add" aria-label="選別的表情"><span class="ico sm i-plus"></span></button></div>
+        </div>
+      </div>
+      <div class="msg me">
+        <div class="stack" style="max-width: 60%;">
+          <div class="meta"><span>09:42</span><b>縵</b></div>
+          <div class="bubble">好呀，我在～想聊什麼？</div>
+        </div>
+        <span class="av sm mm"><i class="an an-mm"></i></span>
+      </div>
+      <div class="msg">
+        <span class="av sm a1"><i class="an an-bear"></i></span>
+        <div class="stack" style="max-width: 60%;">
+          <div class="meta"><b>小米</b><span>09:43</span></div>
+          <div class="bubble">最近拍到好多可愛的<span class="pic p2" style="width: 200px; height: 118px;"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="composer" style="border-radius: 0; padding: 12px 18px 16px;">
+      <div class="line">
+        <button class="btn-ico c-blue" aria-label="長按說話，最長 60 秒"><span class="ico i-mic"></span></button>
+        <button class="btn-ico c-yellow" aria-label="傳圖片"><span class="ico i-image"></span></button>
+        <div class="textarea ph"><span class="grow">回覆小米…</span><button class="in-emoji" aria-label="Emoji 表情"><span class="ico sm i-smile"></span></button></div>
+        <button class="btn c-pinkbtn" style="min-height: 50px;"><span class="ico sm i-send"></span>送出</button>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":1180,"height":760}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

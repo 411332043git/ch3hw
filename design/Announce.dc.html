@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>公告紀錄</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+
+  <div class="tabs" role="tablist" aria-label="聊天室">
+    <button class="tab-toggle" aria-expanded="false" aria-label="展開：好多人、12 人在線、換暱稱"><span class="ico sm i-down"></span></button>
+    <button class="tab on" role="tab" aria-selected="true"><span class="ico sm i-users"></span>好多人</button>
+    <a class="tab" role="tab" aria-selected="false" href="ChatDm.dc.html" style="text-decoration: none;"><span class="ico sm i-lock"></span>兩個人</a>
+  </div>
+  <div class="announce-row"><button class="flower-btn open" aria-expanded="true" aria-label="收起公告紀錄"><span class="flower"></span></button></div>
+
+  <div class="msgs" style="justify-content: flex-end;">
+    <div class="msg">
+      <span class="av sm a2"><i class="an an-rabbit"></i></span>
+      <div class="stack">
+        <div class="meta"><b>麻糬</b><span>09:31</span></div>
+        <div class="bubble">下午兩點在公園集合，記得帶水！</div>
+      </div>
+    </div>
+    <div class="msg">
+      <span class="av sm a6"><i class="an an-cat"></i></span>
+      <div class="stack">
+        <div class="meta"><b>布丁</b><span>09:33</span></div>
+        <div class="bubble">好～我帶點心</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="composer">
+    <div class="line">
+      <button class="btn-ico c-blue" aria-label="長按說話，最長 60 秒"><span class="ico i-mic"></span></button>
+      <button class="btn-ico c-yellow" aria-label="傳圖片"><span class="ico i-image"></span></button>
+      <div class="textarea ph"><span class="grow">說話！</span><button class="in-emoji" aria-label="Emoji 表情"><span class="ico sm i-smile"></span></button></div>
+      <button class="btn-ico c-pink send" aria-label="送出"><span class="ico i-send"></span></button>
+    </div>
+  </div>
+
+  <div class="scrim" style="z-index: 4; background: rgba(91, 66, 52, .22);"></div>
+
+  <section class="card col" style="position: absolute; left: 14px; right: 14px; top: 132px; z-index: 5; padding: 14px 14px 12px; gap: 10px; border-radius: 28px;" aria-label="公告紀錄">
+    <div class="row gap8">
+      <span class="flower" style="width: 26px; height: 26px;"></span>
+      <h2 class="h2 grow" style="font-size: 18px;">曾經設為公告的訊息</h2>
+      <button class="btn-ico flat sm" aria-label="關閉"><span class="ico sm i-x"></span></button>
+    </div>
+
+    <div class="col gap8">
+      <div class="row gap10" style="gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 20px; background: #FFF6D6; border: 2px solid #F5E08B;">
+        <span class="av sm a2"><i class="an an-rabbit"></i></span>
+        <div class="col grow" style="min-width: 0; gap: 2px;">
+          <div class="row gap6"><b class="nowrap">麻糬</b><span class="chip mint" style="height: 22px; font-size: 11.5px;">現在的公告</span></div>
+          <span class="small">下午兩點在公園集合，記得帶水！</span>
+          <span class="tiny muted">訊息 09:31 · 設為公告 09:40</span>
+        </div>
+      </div>
+
+      <div class="row gap10" style="gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 20px; background: var(--cream); border: 2px solid var(--line);">
+        <span class="av sm a6"><i class="an an-cat"></i></span>
+        <div class="col grow" style="min-width: 0; gap: 4px;">
+          <b class="nowrap">布丁</b>
+          <span class="small">看我拍到的！</span>
+          <span class="pic" style="width: 120px; height: 70px; border-radius: 12px;"></span>
+          <span class="tiny muted">訊息 昨天 21:05 · 設為公告 昨天 21:10</span>
+        </div>
+      </div>
+
+      <div class="row gap10" style="gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 20px; background: var(--cream); border: 2px solid var(--line);">
+        <span class="av sm a6"><i class="an an-giraffe"></i></span>
+        <div class="col grow" style="min-width: 0; gap: 2px;">
+          <b class="nowrap">小雲</b>
+          <span class="small">週末一起去海邊嗎？</span>
+          <span class="tiny muted">訊息 10/15 20:12 · 設為公告 10/15 20:15</span>
+        </div>
+      </div>
+    </div>
+    <p class="p tiny muted" style="text-align: center;">點一則，就會跳到它原本的位置</p>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

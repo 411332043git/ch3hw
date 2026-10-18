@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>錄語音</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+
+  <div class="tabs" role="tablist" aria-label="聊天室">
+    <button class="tab-toggle" aria-expanded="false" aria-label="展開：好多人、12 人在線、換暱稱"><span class="ico sm i-down"></span></button>
+    <button class="tab on" role="tab" aria-selected="true"><span class="ico sm i-users"></span>好多人</button>
+    <a class="tab" role="tab" aria-selected="false" href="ChatDm.dc.html" style="text-decoration: none;"><span class="ico sm i-lock"></span>兩個人</a>
+  </div>
+  <div class="announce-row"><button class="flower-btn" aria-label="公告紀錄：曾經設為公告的訊息"><span class="flower"></span></button></div>
+
+  <div class="msgs" style="justify-content: flex-end; gap: 12px;">
+    <div class="msg">
+      <span class="av sm a6"><i class="an an-giraffe"></i></span>
+      <div class="stack">
+        <div class="meta"><b>小雲</b><span>09:34</span></div>
+        <div class="bubble voice">
+          <button class="vplay" aria-label="暫停語音"><span class="ico sm i-pause"></span></button>
+          <span class="wave" aria-hidden="true"><i class="done" style="height: 8px;"></i><i class="done" style="height: 14px;"></i><i class="done" style="height: 10px;"></i><i class="done" style="height: 18px;"></i><i class="done" style="height: 12px;"></i><i class="done" style="height: 22px;"></i><i class="done" style="height: 16px;"></i><i style="height: 10px;"></i><i style="height: 20px;"></i><i style="height: 14px;"></i><i style="height: 8px;"></i><i style="height: 18px;"></i><i style="height: 12px;"></i><i style="height: 16px;"></i><i style="height: 10px;"></i><i style="height: 14px;"></i><i style="height: 8px;"></i><i style="height: 12px;"></i></span>
+          <span class="vtime">0:05 / 0:12</span>
+        </div>
+      </div>
+    </div>
+    <div class="msg me">
+      <div class="stack">
+        <div class="meta"><span>09:36</span><b>小米</b></div>
+        <div class="bubble">好可愛！我也想去～</div>
+      </div>
+      <span class="av sm a1"><i class="an an-crab"></i></span>
+    </div>
+  </div>
+
+  <div class="scrim" style="z-index: 4; background: rgba(91, 66, 52, .26);"></div>
+
+  <section class="card col" style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 5; padding: 18px 20px 24px; gap: 14px; border-radius: 32px 32px 0 0; border-bottom: none;" aria-label="錄語音中">
+    <div class="row gap8">
+      <span class="rec-dot"></span>
+      <span class="bold">錄音中</span>
+      <span class="grow"></span>
+      <span class="bold" style="font-variant-numeric: tabular-nums;">0:47 <span class="muted">/ 1:00</span></span>
+    </div>
+    <div class="progress" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="60"><i style="width: 78%;"></i></div>
+
+    <div class="wave" style="height: 44px; justify-content: space-between; gap: 2px;" aria-hidden="true">
+      <i style="height: 10px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 18px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 28px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 14px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 34px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 22px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 40px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 26px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 16px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 36px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 20px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 30px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 12px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 24px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 38px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 18px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 32px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 14px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 26px; width: 4px; opacity: .7; background: #6FA8D9;"></i><i style="height: 10px; width: 4px; opacity: .7; background: #6FA8D9;"></i>
+    </div>
+
+    <div class="col" style="align-items: center; gap: 16px; padding: 10px 0 2px;">
+      <span class="rec-mic"><span class="ico lg i-mic" style="width: 40px; height: 40px;"></span></span>
+      <span class="small bold">放開後，可以先聽聽看再決定</span>
+    </div>
+    <p class="p tiny muted" style="text-align: center;">語音最長 60 秒，再 13 秒就會自動停止錄音</p>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

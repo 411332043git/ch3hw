@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>選照片視窗</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+
+  <div class="tabs" role="tablist" aria-label="聊天室">
+    <button class="tab-toggle" aria-expanded="false" aria-label="展開：好多人、12 人在線、換暱稱"><span class="ico sm i-down"></span></button>
+    <button class="tab on" role="tab" aria-selected="true"><span class="ico sm i-users"></span>好多人</button>
+    <button class="tab" role="tab" aria-selected="false"><span class="ico sm i-lock"></span>兩個人</button>
+  </div>
+  <div class="announce-row"><button class="flower-btn" aria-label="公告紀錄：曾經設為公告的訊息"><span class="flower"></span></button></div>
+
+  <div class="msgs" style="justify-content: flex-end;">
+    <div class="msg">
+      <span class="av sm a6"><i class="an an-cat"></i></span>
+      <div class="stack">
+        <div class="meta"><b>布丁</b><span>09:33</span></div>
+        <div class="bubble">下午要不要一起去公園？</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="composer">
+    <div class="attach multi">
+      <div class="row">
+        <span class="bold small grow">已選 4 張照片（最多 10 張）</span>
+        <button class="btn xs ghost" aria-label="全部取消">全部取消</button>
+      </div>
+      <div class="thumbs"><div class="th"><span class="pic p2"></span><span class="x"><span class="ico sm i-x" style="width:12px;height:12px;"></span></span></div><div class="th"><span class="pic p2"></span><span class="x"><span class="ico sm i-x" style="width:12px;height:12px;"></span></span></div><div class="th"><span class="pic p2"></span><span class="x"><span class="ico sm i-x" style="width:12px;height:12px;"></span></span></div><div class="th"><span class="pic p2"></span><span class="x"><span class="ico sm i-x" style="width:12px;height:12px;"></span></span></div><div class="th add" aria-label="再加照片"><span class="ico sm i-plus"></span></div></div>
+    </div>
+    <div class="line">
+      <button class="btn-ico c-blue" aria-label="長按說話，最長 60 秒"><span class="ico i-mic"></span></button>
+      <button class="btn-ico c-yellow" aria-label="傳圖片"><span class="ico i-image"></span></button>
+      <div class="textarea ph"><span class="grow">說話！</span><button class="in-emoji" aria-label="Emoji 表情"><span class="ico sm i-smile"></span></button></div>
+      <button class="btn-ico c-pink send" aria-label="送出"><span class="ico i-send"></span></button>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

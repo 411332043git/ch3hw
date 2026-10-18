@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>好多人聊天室（展開）</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+
+  <div class="tabs" role="tablist" aria-label="聊天室" style="position: relative; z-index: 3;">
+    <button class="tab-toggle open" aria-expanded="true" aria-label="收起"><span class="ico sm i-up"></span></button>
+    <button class="tab on" role="tab" aria-selected="true"><span class="ico sm i-users"></span>好多人</button>
+    <a class="tab" role="tab" aria-selected="false" href="ChatDm.dc.html" style="text-decoration: none;"><span class="ico sm i-lock"></span>兩個人<span class="pip"></span></a>
+  </div>
+
+  <div class="topbar" style="margin: -10px 14px 0; padding-top: 24px; border-radius: 0 0 28px 28px; background: #E6F7EE; border-color: #BFE6D3;">
+    <div class="col grow" style="min-width: 0;">
+      <h1 class="h2" style="font-size: 21px;">好多人</h1>
+      <button class="row gap6" style="appearance: none; background: none; border: none; padding: 0; min-height: 30px; cursor: pointer; color: var(--ink); font-size: 13px; font-weight: 800;" aria-expanded="true">
+        <span class="dot"></span>12 人在線<span class="ico sm i-up"></span>
+      </button>
+    </div>
+    <a class="btn xs ghost" href="JoinGroup.dc.html" style="text-decoration: none;">換暱稱</a>
+    <button class="btn-ico sm" aria-label="選單"><span class="ico i-more"></span></button>
+  </div>
+
+  <div class="card col" style="margin: 10px 14px 0; padding: 8px 14px; border-radius: 24px; background: #E6F7EE; border-color: #BFE6D3;" role="list" aria-label="在線名單">
+    <div class="row gap10" style="min-height: 42px; gap: 10px;" role="listitem">
+      <span class="av sm a1 me-ring"><i class="an an-bear"></i></span><span class="bold grow">小米（我）</span><span class="chip mint" style="height: 24px; font-size: 12px;">在線</span>
+    </div>
+    <div class="row" style="min-height: 42px; gap: 10px;" role="listitem">
+      <span class="av sm a2"><i class="an an-rabbit"></i></span><span class="bold grow">麻糬</span><span class="dot"></span>
+    </div>
+    <div class="row" style="min-height: 42px; gap: 10px;" role="listitem">
+      <span class="av sm a6"><i class="an an-cat"></i></span><span class="bold grow">布丁</span><span class="dot"></span>
+    </div>
+    <div class="row" style="min-height: 34px; gap: 10px;" role="listitem">
+      <span class="av sm a6"><i class="an an-giraffe"></i></span><span class="bold grow">小雲</span><span class="tiny muted">還有 8 位…</span>
+    </div>
+  </div>
+
+  <div class="announce-row"><button class="flower-btn" aria-label="公告紀錄：曾經設為公告的訊息"><span class="flower"></span></button></div>
+
+  
+
+  
+
+  <div class="msgs" style="justify-content: flex-end;">
+    <span class="sys">布丁 進來了</span>
+
+    <div class="msg">
+      <span class="av sm a2"><i class="an an-rabbit"></i></span>
+      <div class="stack">
+        <div class="meta"><b>麻糬</b><span>09:31</span></div>
+        <div class="bubble">大家早安～今天天氣好好</div>
+        <div class="rx-row"><span class="rx-stack" role="group" aria-label="表情回應"><button class="rxe on" aria-label="👍 2 人"><span class="e">👍</span></button><button class="rxe" aria-label="❤️ 1 人"><span class="e">❤️</span></button><button class="rxe" aria-label="🎉 1 人"><span class="e">🎉</span></button></span><button class="rx-add" aria-label="選別的表情"><span class="ico sm i-plus"></span></button></div>
+      </div>
+    </div>
+
+    <div class="msg">
+      <span class="av sm a6"><i class="an an-cat"></i></span>
+      <div class="stack">
+        <div class="meta"><b>布丁</b><span>09:33</span></div>
+        <div class="bubble">
+          看我拍到的！
+          <span class="pic" style="width: 190px; height: 112px;"><span class="zoom"><span class="ico sm i-search"></span></span></span>
+        </div>
+        <div class="rx-row"><span class="rx-stack" role="group" aria-label="表情回應"><button class="rxe" aria-label="❤️ 3 人"><span class="e">❤️</span></button><button class="rxe on" aria-label="✨ 1 人"><span class="e">✨</span></button></span><button class="rx-add" aria-label="選別的表情"><span class="ico sm i-plus"></span></button></div>
+      </div>
+    </div>
+
+    <div class="msg me">
+      <div class="stack" style="position: relative">
+        <div class="meta"><span>09:35</span><b>小米</b></div>
+        <div class="bubble">好可愛！我也想去～</div>
+        <div class="rx-row"><span class="rx-stack" role="group" aria-label="表情回應"><button class="rxe" aria-label="🥺 1 人"><span class="e">🥺</span></button></span><button class="rx-add" aria-label="選別的表情"><span class="ico sm i-plus"></span></button></div>
+      <button class="btn sm newbtn" style="position: absolute; left: -5px; top: 71px"><span class="ico sm i-down"></span>3 則新訊息</button></div>
+      <span class="av sm a1"><i class="an an-bear"></i></span>
+    </div>
+
+    <button class="sys recall" aria-label="收回的訊息，長按可以復原">收回</button>
+  </div><div class="composer">
+    <div class="line">
+      <button class="btn-ico c-blue" aria-label="長按說話，最長 60 秒"><span class="ico i-mic"></span></button>
+      <button class="btn-ico c-yellow" aria-label="傳圖片"><span class="ico i-image"></span></button>
+      <div class="textarea ph"><span class="grow">說話！</span><button class="in-emoji" aria-label="Emoji 表情"><span class="ico sm i-smile"></span></button></div>
+      <button class="btn-ico c-pink send" aria-label="送出"><span class="ico i-send"></span></button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

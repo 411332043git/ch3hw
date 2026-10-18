@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>訪客的兩個選項</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+  <div class="row gap8" style="padding: 16px 16px 0;">
+    <a class="btn-ico" href="Main.dc.html" aria-label="回上一頁" style="text-decoration: none;"><span class="ico i-left"></span></a>
+    <span class="grow"></span>
+  </div>
+
+  <div class="col gap20" style="padding: 36px 16px 0;">
+    <a class="card yellow press col gap12" href="JoinGroup.dc.html" style="padding: 20px; text-decoration: none; color: inherit; position: relative;">
+      <div class="row gap12">
+        <span class="row" style="flex: none;">
+          <span class="av lg a1"><i class="an an-dog"></i></span>
+          <span class="av lg a2" style="margin-left: -16px;"><i class="an an-rabbit"></i></span>
+          <span class="av lg a6" style="margin-left: -16px;"><i class="an an-cat"></i></span>
+        </span>
+        <span class="grow"></span>
+        <span class="chip mint"><span class="dot"></span>12 人在線</span>
+      </div>
+      <div class="col gap4">
+        <span class="title" style="font-size: 26px;">好多人</span>
+        <span class="p">全部匿名，只要輸入一個名稱就能進去。</span>
+      </div>
+      <div class="row gap8">
+        <span class="chip line">匿名</span>
+        <span class="chip line" role="img" aria-label="三個匿名的人"><span class="ico sm i-user"></span><span class="ico sm i-user"></span><span class="ico sm i-user"></span></span>
+        <span class="grow"></span>
+        <span class="btn sm">進去<span class="ico sm i-right"></span></span>
+      </div>
+    </a>
+
+    <a class="card rose press col gap12" href="DmEnter.dc.html" style="padding: 20px; text-decoration: none; color: inherit; position: relative;">
+      <div class="row gap12">
+        <span class="row" style="flex: none;">
+          <span class="av lg a4"><i class="an an-pig"></i></span>
+          <span class="av lg mm" style="margin-left: -16px;"><i class="an an-mm"></i></span>
+        </span>
+        <span class="grow"></span>
+        <span class="chip yellow"><span class="ico sm i-lock"></span>要輸入數字</span>
+      </div>
+      <div class="col gap4">
+        <span class="title" style="font-size: 26px;">兩個人</span>
+        <span class="p">只有你和縵兩個人。需要輸入自己的名字，和你預設的數字。</span>
+      </div>
+      <div class="row gap8">
+        <span class="chip line">一對一</span>
+        <span class="chip line" role="img" aria-label="一般聊天和悄悄話"><span class="ico sm i-chat"></span><span class="ico sm i-whisper"></span></span>
+        <span class="grow"></span>
+        <span class="btn sm blue">進去<span class="ico sm i-right"></span></span>
+      </div>
+    </a>
+  </div>
+
+  <div class="grow"></div>
+  <p class="p tiny muted center" style="padding: 0 24px 22px;">兩個地方，你可以隨時來回切換</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

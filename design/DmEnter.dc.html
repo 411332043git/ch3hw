@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>兩個人進入畫面</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+  <div class="row gap8" style="padding: 14px 16px 0;">
+    <a class="btn-ico" href="Visitor.dc.html" aria-label="回上一頁" style="text-decoration: none;"><span class="ico i-left"></span></a>
+    <span class="grow"></span>
+  </div>
+
+  <div class="col" style="align-items: center; gap: 10px; padding: 14px 24px 0; text-align: center;">
+    <div class="row" style="position: relative; height: 96px; width: 190px; justify-content: center;">
+      <span class="av xl a4" style="position: absolute; left: 8px; top: 2px;"><i class="an an-pig"></i></span>
+      <span class="av xl mm" style="position: absolute; right: 8px; top: 2px; font-size: 26px;"><i class="an an-mm"></i></span>
+    </div>
+    <h1 class="title" style="margin-top: 8px;">進入「兩個人」</h1>
+    <p class="p muted small">輸入名字和自己預設的數字</p>
+  </div>
+
+  <div class="card col gap16" style="margin: 18px 16px 0; padding: 20px 18px;">
+    <div class="field">
+      <label class="label" for="nm">名字<span class="chip pink" style="height: 24px; font-size: 12px;">輸入自己的名字</span></label>
+      <input class="input" id="nm" value="小米" autocomplete="off">
+    </div>
+
+    <div class="field">
+      <label class="label" for="pw">數字<button class="link" style="min-height: 28px; padding: 0 2px; font-size: 13px;"><span class="ico sm i-eye" style="vertical-align: -3px;"></span> 顯示</button></label>
+      <input class="input err" id="pw" type="password" value="123456" aria-describedby="pw-err" style="letter-spacing: .3em;">
+      <span class="msg-err" id="pw-err"><span class="ico sm i-info"></span>名字或數字不對</span>
+      <span class="hint">這就是你第一次進來時自己設的那組數字（四位或六位）</span>
+    </div>
+
+    <label class="row gap12" style="min-height: 48px; cursor: pointer;">
+      <span class="check"></span>
+      <span class="col grow">
+        <span class="bold" style="font-size: 15px;">記得這個裝置</span>
+        <span class="tiny muted">下次這台裝置不用再輸入數字</span>
+      </span>
+    </label>
+
+    <button class="btn block">進入<span class="ico sm i-right"></span></button>
+  </div>
+
+  <div class="bar yellow" style="margin: 14px 16px 0; font-size: 12.5px; font-weight: 700; line-height: 1.45;">
+    <span class="ico sm i-lock"></span>
+    <span>連續輸錯 5 次，這個名字會暫時鎖住一段時間，請晚一點再試</span>
+  </div>
+
+  <div class="grow"></div>
+  <div class="col" style="align-items: center; padding: 0 16px 20px;">
+    <a class="link" href="DmNew.dc.html">第一次來？設定我的名字和數字</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

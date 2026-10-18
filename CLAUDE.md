@@ -6,6 +6,8 @@
 
 先讀 `docs/architecture.md`（架構、規則、畫面、驗證清單都在裡面）。需求原文在 `docs/requirements.md`。
 
+做畫面、樣式時，再讀 `docs/design.md`（顏色、元件、互動、畫面清單）；設計稿原始檔在 `design/`。
+
 ## 目前階段
 
 **階段一**：只做前端，使用 `mockService`（示範模式），不接 Supabase。階段二才接 Supabase。

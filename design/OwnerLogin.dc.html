@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>站長登入</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+  <div class="row gap8" style="padding: 14px 16px 0;">
+    <a class="btn-ico" href="Main.dc.html" aria-label="回上一頁" style="text-decoration: none;"><span class="ico i-left"></span></a>
+    <span class="grow"></span>
+  </div>
+
+  <div class="col" style="align-items: center; gap: 8px; padding: 10px 24px 0; text-align: center;">
+    <span class="av xl mm" style="font-size: 30px;"><i class="an an-mm"></i></span>
+    <h1 class="title">縵縵登入</h1>
+  </div>
+
+  <div class="card col gap16" style="margin: 16px 16px 0; padding: 18px;">
+    <div class="seg-tabs" role="group" aria-label="登入或建立帳號">
+      <span class="seg-tab on">登入</span>
+      <span class="seg-tab">第一次使用，建立站長帳號</span>
+    </div>
+
+    <div class="field">
+      <label class="label" for="em">帳號（Email）</label>
+      <input class="input" id="em" type="email" value="mm@example.com" autocomplete="username">
+    </div>
+
+    <div class="field">
+      <label class="label" for="pw">密碼<button class="link" style="min-height: 28px; padding: 0 2px; font-size: 13px;"><span class="ico sm i-eye" style="vertical-align: -3px;"></span> 顯示</button></label>
+      <input class="input err" id="pw" type="password" value="12345678" aria-describedby="pw-err" autocomplete="current-password">
+      <span class="msg-err" id="pw-err"><span class="ico sm i-info"></span>帳號或密碼不對</span>
+    </div>
+
+    <button class="btn block"><span class="ico sm i-key"></span>登入</button>
+  </div>
+
+  <div class="card yellow col gap12" style="margin: 14px 16px 0; padding: 14px 16px;">
+    <div class="row gap8"><span class="ico-bg yellow" style="width: 34px; height: 34px; border-radius: 12px; background: #fff;"><span class="ico sm i-user"></span></span><span class="bold">第一次使用時會多出這些</span></div>
+    <div class="field">
+      <span class="label" style="font-size: 13px;">確認密碼</span>
+      <div class="input" style="min-height: 44px; display: flex; align-items: center; letter-spacing: .3em; color: #B09A8B;">********</div>
+      <span class="hint">密碼至少 8 個字元，兩次要一樣。已經有站長時會顯示「無法建立站長帳號」</span>
+    </div>
+  </div>
+
+  <div class="grow"></div>
+  <p class="p tiny muted" style="text-align: center; padding: 0 28px 20px; line-height: 1.5;">忘記密碼？到 Supabase 後台的使用者頁面，幫這個帳號重設密碼。這裡沒有寄信功能。</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

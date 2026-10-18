@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>兩個人聊天室</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+
+  <div class="tabs dm" role="tablist" aria-label="聊天室">
+    <button class="tab-toggle open" aria-expanded="true" aria-label="收起"><span class="ico sm i-up"></span></button>
+    <a class="tab" role="tab" aria-selected="false" href="ChatGroup.dc.html" style="text-decoration: none;"><span class="ico sm i-users"></span>好多人</a>
+    <button class="tab on dm" role="tab" aria-selected="true"><span class="ico sm i-lock"></span>兩個人</button>
+  </div>
+
+  <div class="topbar dm" style="margin-top: 8px;">
+    <span class="av mm"><i class="an an-mm"></i></span>
+    <div class="col grow" style="min-width: 0;">
+      <h1 class="h2" style="font-size: 20px;">兩個人</h1>
+      <span class="row gap6 small bold"><span class="dot"></span>縵 在線上</span>
+    </div>
+    <div class="tt mode" role="group" aria-label="聊天模式">
+      <button class="tt-pink on" aria-label="一般聊天" aria-pressed="true"><span class="icc sun-c"></span></button>
+      <button class="tt-blue" aria-label="悄悄話" aria-pressed="false"><span class="icc meteor-c"></span></button>
+      <span class="tip under yellow r" role="status">一般聊天</span>
+    </div>
+    <button class="btn-ico sm" aria-label="選單"><span class="ico i-more"></span></button>
+  </div>
+
+  <div class="msgs" style="justify-content: flex-end; gap: 10px;">
+    <div class="msg">
+      <span class="av sm mm"><i class="an an-mm"></i></span>
+      <div class="stack">
+        <div class="meta"><b>縵</b><span>昨天 21:10</span></div>
+        <div class="bubble">晚安～明天見！</div>
+      </div>
+    </div>
+
+    <div class="msg me">
+      <div class="stack">
+        <div class="meta"><span>09:50</span><b>小米</b></div>
+        <div class="bubble">今天天氣好好～</div>
+      </div>
+      <span class="av sm a1"><i class="an an-bear"></i></span>
+    </div>
+  </div>
+
+  <div class="composer">
+    <div class="line">
+      <button class="btn-ico c-blue" aria-label="長按說話，最長 60 秒"><span class="ico i-mic"></span></button>
+      <button class="btn-ico c-yellow" aria-label="傳圖片"><span class="ico i-image"></span></button>
+      <div class="textarea ph"><span class="grow">說話！</span><button class="in-emoji" aria-label="Emoji 表情"><span class="ico sm i-smile"></span></button></div>
+      <button class="btn-ico c-pink send" aria-label="送出"><span class="ico i-send"></span></button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

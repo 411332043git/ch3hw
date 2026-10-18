@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>選身分</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+  <div class="row" style="justify-content: flex-end; padding: 16px 16px 0;">
+  </div>
+
+  <div style="position: relative; height: 210px; margin: 26px 16px 0;" aria-hidden="true">
+    <div style="position: absolute; left: 6px; top: 70px; width: 64px; height: 64px; border-radius: 50%; background: var(--yellow); opacity: .9;"></div>
+    <div style="position: absolute; right: 10px; top: 14px; width: 46px; height: 46px; border-radius: 50%; background: var(--mint);"></div>
+    <div style="position: absolute; right: 40px; bottom: 6px; width: 28px; height: 28px; border-radius: 50%; background: var(--peach);"></div>
+    <span class="av xl a1" style="position: absolute; left: 34px; top: 66px;"><i class="an an-dog"></i></span>
+    <span class="av xl a2" style="position: absolute; left: 120px; top: 20px; width: 112px; height: 112px; font-size: 60px;"><i class="an an-rabbit"></i></span>
+    <span class="av xl a6" style="position: absolute; left: 236px; top: 74px;"><i class="an an-cat"></i></span>
+    <span class="av lg a4" style="position: absolute; left: 82px; top: 148px;"><i class="an an-bear"></i></span>
+    <span class="av lg a6" style="position: absolute; left: 168px; top: 140px;"><i class="an an-fish"></i></span>
+    <span class="av sm a4" style="position: absolute; left: 270px; top: 168px;"><i class="an an-pig"></i></span>
+    <div style="position: absolute; left: 12px; top: 14px; width: 34px; height: 34px; border-radius: 50%; background: var(--accent);"></div>
+    <div style="position: absolute; right: 76px; top: 6px; width: 30px; height: 30px; border-radius: 50%; background: var(--second);"></div>
+  </div>
+
+  
+
+  <div class="col gap16" style="padding: 52px 16px 0;">
+    <a class="card sky press col gap12" href="Visitor.dc.html" style="padding: 16px; text-decoration: none; color: inherit;">
+      <span class="row">
+        <span class="row" style="flex: none;">
+          <span class="av lg a2"><i class="an an-duck"></i></span>
+          <span class="av lg a6" style="margin-left: -14px;"><i class="an an-giraffe"></i></span>
+          <span class="av lg a4" style="margin-left: -14px;"><i class="an an-crab"></i></span>
+        </span>
+        <span class="grow"></span>
+        <span class="ico i-right"></span>
+      </span>
+      <span class="col gap4">
+        <span class="h2">訪客</span>
+        <span class="row gap6" style="margin-top: 4px;"><span class="chip mint">好多人</span><span class="chip yellow">兩個人</span></span>
+      </span>
+    </a>
+
+    <a class="card yellow press row gap12" href="OwnerLogin.dc.html" style="padding: 16px; text-decoration: none; color: inherit;">
+      <span class="av xl mm" style="width: 60px; height: 60px; background: #FFE3EA;"><i class="an an-mm"></i></span>
+      <span class="col grow gap4">
+        <span class="h2">縵</span>
+        <span class="row gap6" style="margin-top: 4px;"><span class="chip line"><span class="ico sm i-lock"></span>需要登入</span></span>
+      </span>
+      <span class="ico i-right"></span>
+    </a>
+  </div><div class="grow"></div>
+  <p class="p tiny muted center" style="padding: 0 24px 22px;">隨時可以從選單回到這裡</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>傳檔案</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+
+  <div class="tabs" role="tablist" aria-label="聊天室">
+    <button class="tab-toggle" aria-expanded="false" aria-label="展開：好多人、12 人在線、換暱稱"><span class="ico sm i-down"></span></button>
+    <button class="tab on" role="tab" aria-selected="true"><span class="ico sm i-users"></span>好多人</button>
+    <a class="tab" role="tab" aria-selected="false" href="ChatDm.dc.html" style="text-decoration: none;"><span class="ico sm i-lock"></span>兩個人</a>
+  </div>
+  <div class="announce-row"><button class="flower-btn" aria-label="公告紀錄：曾經設為公告的訊息"><span class="flower"></span></button></div>
+
+  <div class="msgs" style="justify-content: flex-end; gap: 12px;">
+    <div class="msg">
+      <span class="av sm a3"><i class="an an-cat"></i></span>
+      <div class="stack">
+        <div class="meta"><b>布丁</b><span>昨天 20:10</span></div>
+        <div class="bubble file gone"><span class="fileicon"><span class="ico i-file"></span></span><div class="col" style="min-width:0;"><span class="fname">旅遊行程.pdf</span><span class="fmeta">已過期</span></div></div>
+      </div>
+    </div>
+    <div class="msg">
+      <span class="av sm a2"><i class="an an-rabbit"></i></span>
+      <div class="stack">
+        <div class="meta"><b>麻糬</b><span>09:31</span></div>
+        <div class="bubble file"><span class="fileicon">PDF</span><div class="col grow" style="min-width:0;"><span class="fname">旅遊行程.pdf</span><span class="fmeta">2.4 MB · 明天 09:31 過期</span></div><button class="btn-ico sm" aria-label="下載"><span class="ico sm i-download"></span></button></div>
+      </div>
+    </div>
+    <div class="msg me">
+      <div class="stack">
+        <div class="meta"><span>09:34</span><b>小米</b></div>
+        <div class="bubble file"><span class="fileicon">ZIP</span><div class="col grow" style="min-width:0;"><span class="fname">照片整理.zip</span><span class="fmeta">38 MB · 明天 09:34 過期</span></div><button class="btn-ico sm" aria-label="下載"><span class="ico sm i-download"></span></button></div>
+      </div>
+      <span class="av sm a1"><i class="an an-bear"></i></span>
+    </div>
+  </div>
+
+  <div class="pickmenu" role="menu" aria-label="藍色鈕：語音與檔案">
+    <div class="it" role="menuitem" style="background: #CFE6FA;"><span class="ico sm i-mic"></span>錄語音</div>
+    <div class="it" role="menuitem" style="background: #FFC7A3;"><span class="ico sm i-file"></span>傳檔案</div>
+    <div class="hint">文件和壓縮檔，50MB 以內</div>
+  </div>
+
+  <div class="composer">
+    <div class="attach multi">
+      <div class="row">
+        <span class="bold small grow">已選 1 個檔案（50MB 以內）</span>
+      </div>
+      <div class="row gap8"><span class="th" style="position:relative;flex:none;"><span class="fileicon" style="width:44px;height:44px;border-radius:14px;background:var(--peach);border:2px solid rgba(91,66,52,.14);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#5B4234;">DOC</span><span class="x" aria-label="取消這個檔案" role="button"><span class="ico sm i-x" style="width:12px;height:12px;"></span></span></span><div class="col"><span class="small bold">期末報告.docx</span><span class="tiny muted">1.8 MB</span></div></div>
+    </div>
+    <div class="line">
+      <button class="btn-ico c-blue" aria-label="長按說話，最長 60 秒"><span class="ico i-mic"></span></button>
+      <button class="btn-ico c-yellow" aria-label="傳圖片"><span class="ico i-image"></span></button>
+      <div class="textarea ph"><span class="grow">說話！</span><button class="in-emoji" aria-label="Emoji 表情"><span class="ico sm i-smile"></span></button></div>
+      <button class="btn-ico c-pink send" aria-label="送出"><span class="ico i-send"></span></button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

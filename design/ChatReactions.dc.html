@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>表情回應</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+
+  <div class="tabs" role="tablist" aria-label="聊天室">
+    <button class="tab-toggle" aria-expanded="false" aria-label="展開：好多人、12 人在線、換暱稱"><span class="ico sm i-down"></span></button>
+    <button class="tab on" role="tab" aria-selected="true"><span class="ico sm i-users"></span>好多人</button>
+    <button class="tab" role="tab" aria-selected="false"><span class="ico sm i-lock"></span>兩個人</button>
+  </div>
+  <div class="announce-row"><button class="flower-btn" aria-label="公告紀錄：曾經設為公告的訊息"><span class="flower"></span></button></div>
+
+  <div class="msgs" style="justify-content: flex-start; padding-top: 74px; position: relative;">
+
+    <div class="msg">
+      <span class="av sm a6"><i class="an an-cat"></i></span>
+      <div class="stack" style="position: relative;">
+        <div class="meta"><b>布丁</b><span>09:33</span></div>
+        <div class="bubble">下午要不要一起去公園？</div>
+        <div class="rx-row"><span class="rx-stack" role="group" aria-label="表情回應"><button class="rxe on" aria-label="❤️ 5 人"><span class="e">❤️</span></button><button class="rxe" aria-label="👍 2 人"><span class="e">👍</span></button></span><button class="rx-add" aria-label="選別的表情"><span class="ico sm i-plus"></span></button></div>
+        <div class="tip under" role="tooltip">
+          <span class="bold">按了 ❤️ 的人</span>
+          <span>麻糬、布丁、小雲…等 5 人</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet" role="dialog" aria-label="選一個表情回應">
+    <span class="grab"></span>
+    <div class="row">
+      <span class="h2 grow">選一個表情回應</span>
+      <button class="btn-ico flat" aria-label="關閉"><span class="ico i-x"></span></button>
+    </div>
+
+    <div class="cat-tabs" role="tablist">
+      <span class="cat srch" role="button" aria-label="搜尋表情"><span class="ico sm i-search"></span></span><span class="cat on">最近使用</span><span class="cat">表情</span><span class="cat">動物</span><span class="cat">食物</span><span class="cat">活動</span><span class="cat">符號</span>
+    </div>
+
+    <div class="col gap4">
+      <span class="tiny muted bold">最近使用</span>
+      <div class="emoji-grid eight">
+        <button class="emo on">❤️</button><button class="emo">🎉</button><button class="emo">😂</button><button class="emo">🥰</button><button class="emo">👏</button><button class="emo">🙌</button><button class="emo">💖</button><button class="emo">🌸</button>
+      </div>
+    </div>
+
+    <div class="col gap4">
+      <span class="tiny muted bold">表情</span>
+      <div class="emoji-grid eight">
+        <button class="emo">😀</button><button class="emo">😃</button><button class="emo">😄</button><button class="emo">😁</button><button class="emo">😆</button><button class="emo">🥹</button><button class="emo">😅</button><button class="emo">🤣</button>
+        <button class="emo">😊</button><button class="emo">😇</button><button class="emo">🙂</button><button class="emo">😉</button><button class="emo">😌</button><button class="emo">😍</button><button class="emo">🥰</button><button class="emo">😘</button>
+        <button class="emo">😋</button><button class="emo">😛</button><button class="emo">🤪</button><button class="emo">😎</button><button class="emo">🤩</button><button class="emo">🥳</button><button class="emo">😏</button><button class="emo">😴</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

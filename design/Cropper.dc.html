@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>頭像裁切視窗</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+  <div class="row gap8" style="padding: 14px 16px 0;">
+    <a class="btn-ico" href="JoinGroup.dc.html" aria-label="取消" style="text-decoration: none;"><span class="ico i-x"></span></a>
+    <h1 class="h2 grow" style="text-align: center;">調整你的頭像</h1>
+    <span style="width: 46px;"></span>
+  </div>
+
+  <div class="cam" style="position: relative; margin: 38px 16px 0; height: 330px; background: #E8D5C4;" role="img" aria-label="照片，可以拖曳和縮放">
+    <span class="kid-pic" style="position: absolute; inset: -14px;"></span>
+    <span class="ring" style="width: 250px; height: 250px;"></span>
+    <span class="chip" style="position: absolute; left: 12px; top: 12px; background: rgba(255, 253, 249, .92);"><span class="ico sm i-up"></span>拖曳移動</span>
+  </div>
+
+  <div class="col gap8" style="padding: 18px 22px 0;">
+    <div class="row gap12">
+      <span class="ico sm i-image"></span>
+      <div class="slider grow" role="slider" aria-label="縮放" aria-valuenow="42"><i></i><b></b></div>
+      <span class="ico lg i-image"></span>
+    </div>
+    <p class="p tiny muted" style="text-align: center;">手機用手指拖曳、兩指縮放；電腦用滑鼠拖曳、滾輪或滑桿縮放</p>
+  </div>
+
+  <div class="card row gap12" style="margin: 14px 16px 0; padding: 14px 16px;">
+    <div class="col gap8 grow" style="min-width: 0;">
+      <span class="tiny muted bold">頭像會長這樣</span>
+      <span class="chip mint" style="align-self: flex-start;"><span class="ico sm i-check"></span>會縮成小圖</span>
+    </div>
+    <div class="row gap12" style="align-items: flex-end; flex: none;">
+      <span class="av lg kid-av"></span>
+      <span class="av kid-av"></span>
+      <span class="av sm kid-av"></span>
+    </div>
+  </div>
+
+  <div class="bar pink" style="margin: 12px 16px 0; font-size: 12.5px; font-weight: 700;">
+    <span class="ico sm i-info"></span>
+    <span>圖片無法讀取（例如格式不支援）時，這裡會顯示原因</span>
+  </div>
+
+  <div class="grow"></div>
+  <div class="row gap12" style="padding: 0 16px 20px;">
+    <a class="btn ghost grow" href="Camera.dc.html" style="text-decoration: none;"><span class="ico sm i-refresh"></span>重選</a>
+    <a class="btn grow" href="JoinGroup.dc.html" style="text-decoration: none;"><span class="ico sm i-check"></span>使用這張</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

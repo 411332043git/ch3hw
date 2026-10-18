@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>狀態提示</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}" style="padding: 14px 14px 28px; height: auto; min-height: 844px; overflow: visible;">
+  <div class="row" style="margin-bottom: 8px;">
+    <h1 class="h2 grow">狀態提示</h1>
+  </div>
+
+  <div class="col gap6">
+    <span class="tiny muted bold">示範模式提示條（階段一）</span>
+    <div class="bar yellow"><span class="ico sm i-info"></span><span class="grow">示範模式：訊息只存在你的瀏覽器</span></div>
+
+    <span class="tiny muted bold" style="margin-top: 4px;">連線狀態條（斷線時）</span>
+    <div class="bar peach"><span class="ico sm i-wifioff"></span><span class="grow">連線中斷，重新連線中…</span><span class="chip" style="height: 24px; font-size: 12px; background: #fff;">2 則暫存</span></div>
+
+    <span class="tiny muted bold" style="margin-top: 4px;">暫存訊息列（連線恢復後，在輸入框上方）</span>
+    <div class="card col" style="padding: 10px 12px; border-radius: 24px;">
+      <div class="row gap6" style="padding-bottom: 6px;"><span class="ico sm i-refresh"></span><span class="bold small">斷線時你打的訊息</span><span class="grow"></span><span class="tiny muted">最多 5 則</span></div>
+      <div class="col" style="gap: 8px;">
+        <div class="col gap6" style="padding: 8px 10px; border-radius: 18px; background: var(--cream); border: 2px solid var(--line);">
+          <span class="small">下午要不要一起去公園？</span>
+          <div class="row gap6"><span class="tiny muted grow">09:36 存起來</span><button class="btn xs">送出</button><button class="btn xs ghost">放回輸入框</button><button class="btn-ico flat sm" aria-label="刪除"><span class="ico sm i-trash"></span></button></div>
+        </div>
+        <div class="col gap6" style="padding: 8px 10px; border-radius: 18px; background: var(--cream); border: 2px solid var(--line);">
+          <span class="small">我帶點心去～</span>
+          <div class="row gap6"><span class="tiny muted grow">09:37 存起來</span><button class="btn xs">送出</button><button class="btn xs ghost">放回輸入框</button><button class="btn-ico flat sm" aria-label="刪除"><span class="ico sm i-trash"></span></button></div>
+        </div>
+      </div>
+    </div>
+
+    <span class="tiny muted bold" style="margin-top: 4px;">短暫提示（幾秒後自己消失）</span>
+    <div class="row gap6" style="flex-wrap: wrap;">
+      <span class="toast soft"><span class="ico sm i-info"></span>慢一點喔～</span>
+      <span class="toast"><span class="ico sm i-wifioff"></span>目前沒有網路，已先幫你存起來</span>
+      <span class="toast soft"><span class="ico sm i-ban"></span>目前無法傳送訊息</span>
+      <span class="toast"><span class="ico sm i-check"></span>照片已刪除</span>
+      <span class="toast soft"><span class="ico sm i-mic"></span>沒有允許使用麥克風</span>
+      <span class="toast"><span class="ico sm i-mic"></span>語音最長 60 秒，已自動停止錄音</span>
+    </div>
+
+    <span class="tiny muted bold" style="margin-top: 4px;">「兩個人」的選單（⋯）</span>
+    <div class="card col" style="padding: 8px; border-radius: 24px; gap: 2px;">
+      <div class="set-row" style="padding: 8px 10px; min-height: 46px;"><span class="ico sm i-phone"></span><span class="bold grow">記得這個裝置</span><span class="sw on" role="switch" aria-checked="true" aria-label="記得這個裝置"></span></div>
+      <div class="set-row" style="padding: 8px 10px; min-height: 46px;"><span class="ico sm i-trash"></span><span class="bold grow">清空我這邊的畫面</span></div>
+      <div class="set-row" style="padding: 8px 10px; min-height: 46px;"><span class="ico sm i-logout"></span><span class="bold grow">忘記我所有的裝置</span></div>
+      <div class="set-row" style="padding: 8px 10px; min-height: 46px;"><span class="ico sm i-palette"></span><span class="bold grow">換主題</span><span class="thm"><i class="p on" title="馬卡龍"></i><i class="n" title="星夜"></i></span></div>
+      <div class="set-row" style="padding: 8px 10px; min-height: 46px;"><span class="ico sm i-left"></span><span class="bold grow">回到選身分畫面</span></div>
+    </div>
+
+    <span class="tiny muted bold" style="margin-top: 4px;">「好多人」的選單（⋯）</span>
+    <div class="card col" style="padding: 8px; border-radius: 24px; gap: 2px;">
+      <div class="set-row" style="padding: 8px 10px; min-height: 46px;"><span class="ico sm i-users"></span><span class="bold grow">換暱稱與頭像</span></div>
+      <div class="set-row" style="padding: 8px 10px; min-height: 46px;"><span class="ico sm i-palette"></span><span class="bold grow">換主題</span><span class="thm"><i class="p on" title="馬卡龍"></i><i class="n" title="星夜"></i></span></div>
+      <div class="set-row" style="padding: 8px 10px; min-height: 46px;"><span class="ico sm i-left"></span><span class="bold grow">回到選身分畫面</span></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>站長對話列表</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+
+  <div class="tabs dm" role="tablist" aria-label="聊天室">
+    <button class="tab-toggle open" aria-expanded="true" aria-label="收起"><span class="ico sm i-up"></span></button>
+    <a class="tab" role="tab" aria-selected="false" href="ChatGroup.dc.html" style="text-decoration: none;"><span class="ico sm i-users"></span>好多人</a>
+    <button class="tab on dm" role="tab" aria-selected="true"><span class="ico sm i-lock"></span>兩個人<span class="count" style="margin-left: 2px;">6</span></button>
+  </div>
+
+  <div class="topbar dm" style="margin-top: 8px;">
+    <span class="av mm"><i class="an an-mm"></i></span>
+    <div class="col grow" style="min-width: 0;">
+      <h1 class="h2" style="font-size: 20px;">所有對話</h1>
+    </div>
+    <a class="btn-ico sm" href="OwnerSettings.dc.html" aria-label="設定" style="text-decoration: none;"><span class="ico i-sliders"></span></a>
+  </div>
+
+  <div class="col gap8" style="padding: 12px 14px 0;">
+    <div class="row gap8 input" style="min-height: 46px; padding: 0 14px;">
+      <span class="ico sm i-search"></span>
+      <span class="muted" style="font-weight: 600;">用名字找對話</span>
+    </div>
+
+    <div class="col gap8" role="list" aria-label="對話列表">
+      <span class="pin-label"><span class="ico sm i-pin"></span>置頂</span>
+      <a class="dm-row" role="listitem" href="OwnerChat.dc.html" style="text-decoration: none; color: inherit;">
+        <span class="av a1"><i class="an an-bear"></i></span>
+        <div class="col grow" style="min-width: 0;">
+          <div class="row gap6"><b class="nowrap grow">小米</b><span class="ico sm i-pin" role="img" aria-label="已置頂"></span><span class="tiny muted">09:41</span></div>
+          <span class="small nowrap">今天可以聊聊嗎</span>
+        </div>
+        <span class="count">2</span>
+      </a>
+
+      <div class="dm-row" role="listitem">
+        <span class="av a7"><i class="an an-tiger"></i></span>
+        <div class="col grow" style="min-width: 0;">
+          <div class="row gap6"><b class="nowrap grow">小雨</b><span class="ico sm i-pin" role="img" aria-label="已置頂"></span><span class="tiny muted">09:20</span></div>
+          <span class="small nowrap row gap6"><span class="ico sm i-whisper"></span>悄悄話</span>
+        </div>
+        <span class="count">3</span>
+      </div>
+
+      <div class="dm-row" role="listitem">
+        <span class="av a3"><i class="an an-koala"></i></span>
+        <div class="col grow" style="min-width: 0;">
+          <div class="row gap6"><b class="nowrap grow">布朗</b><span class="ico sm i-pin" role="img" aria-label="已置頂"></span><span class="tiny muted">週二</span></div>
+          <span class="small nowrap muted">謝謝你！</span>
+        </div>
+      </div>
+
+      <span class="pin-label" style="padding-top: 8px;">其他對話</span>
+      <div class="dm-row" role="listitem">
+        <span class="av a4"><i class="an an-dog"></i></span>
+        <div class="col grow" style="min-width: 0;">
+          <div class="row gap6"><b class="nowrap grow">阿凱</b><span class="tiny muted">昨天</span></div>
+          <span class="small nowrap row gap6"><span class="ico sm i-image"></span>圖片</span>
+        </div>
+        <span class="count">1</span>
+      </div>
+
+      <div class="dm-row blocked" role="listitem">
+        <span class="av a6" style="filter: grayscale(.6);"><i class="an an-frog"></i></span>
+        <div class="col grow" style="min-width: 0;">
+          <div class="row gap6"><b class="nowrap grow">路人</b><span class="chip" style="height: 24px; font-size: 12px; background: #E3D2C2;"><span class="ico sm i-ban"></span>已封鎖</span></div>
+          <span class="small nowrap muted">（只有你看得到這個標記）</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

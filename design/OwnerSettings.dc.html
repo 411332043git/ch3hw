@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>站長設定</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+
+  <div class="topbar">
+    <a class="btn-ico sm" href="OwnerInbox.dc.html" aria-label="回對話列表" style="text-decoration: none;"><span class="ico i-left"></span></a>
+    <h1 class="h2 grow" style="font-size: 21px;">設定</h1>
+  </div>
+
+  <div class="col gap12" style="padding: 12px 14px 0;">
+
+    <div class="card col" style="border-radius: 26px;">
+      <div class="set-row">
+        <span class="ico-bg mint"><span class="ico i-eye"></span></span>
+        <div class="col grow"><span class="bold">公開我的在線狀態</span><span class="tiny muted">打開後，訪客看得到「縵 在線上」</span></div>
+        <span class="sw" role="switch" aria-checked="false" aria-label="公開我的在線狀態"></span>
+      </div>
+      <div class="set-row">
+        <span class="ico-bg blue"><span class="ico i-check"></span></span>
+        <div class="col grow"><span class="bold">公開已讀</span><span class="tiny muted">打開後，訪客看得到你讀到哪裡</span></div>
+        <span class="sw" role="switch" aria-checked="false" aria-label="公開已讀"></span>
+      </div>
+      <p class="p tiny muted" style="padding: 0 16px 12px;">兩個開關預設都是關閉，也就是不公開</p>
+    </div>
+
+    <div class="card col" style="border-radius: 26px;">
+      <div class="set-row">
+        <span class="ico-bg yellow"><span class="ico i-bell"></span></span>
+        <div class="col grow"><span class="bold">提示音</span><span class="tiny muted">只影響你自己</span></div>
+        <span class="sw on" role="switch" aria-checked="true" aria-label="提示音"></span>
+      </div>
+      <div class="set-row">
+        <span class="ico-bg peach"><span class="ico i-bell"></span></span>
+        <div class="col grow"><span class="bold">瀏覽器通知</span><span class="tiny muted">只顯示名字，不顯示訊息內容</span></div>
+        <button class="btn xs">允許</button>
+      </div>
+      <div class="bar peach" style="margin: 0 14px 12px; font-size: 12.5px; font-weight: 700;"><span class="ico sm i-info"></span><span>通知只在網頁開著時有效；如果被拒絕了，請到瀏覽器網站設定重新允許</span></div>
+    </div>
+
+    <div class="card col" style="border-radius: 26px;">
+      <div class="row" style="padding: 12px 16px 6px;"><span class="h2 grow" style="font-size: 17px;">已登入的裝置</span><span class="tiny muted">30 天沒用會自動忘記</span></div>
+      <div class="set-row" style="border-top: none;">
+        <span class="ico-bg pink"><span class="ico i-phone"></span></span>
+        <div class="col grow"><span class="bold">Chrome · Windows <span class="chip mint" style="height: 22px; font-size: 11.5px;">這台</span></span><span class="tiny muted">剛剛 · 已記得</span></div>
+        <span class="sw on" role="switch" aria-checked="true" aria-label="記得這個裝置"></span>
+      </div>
+      <div class="dev">
+        <span class="ico-bg blue"><span class="ico i-phone"></span></span>
+        <div class="col grow"><span class="bold">Safari · iPhone</span><span class="tiny muted">3 小時前 · 已記得</span></div>
+        <button class="btn xs ghost">忘記此裝置</button>
+      </div>
+      <div class="dev">
+        <span class="ico-bg yellow"><span class="ico i-phone"></span></span>
+        <div class="col grow"><span class="bold">Edge · Windows</span><span class="tiny muted">12 天前 · 這次先不要記得</span></div>
+        <button class="btn xs ghost">忘記此裝置</button>
+      </div>
+    </div>
+
+    <div class="row gap8">
+      <button class="btn sm ghost grow"><span class="ico sm i-logout"></span>登出所有其他裝置</button>
+      <a class="btn sm grow" href="Main.dc.html" style="text-decoration: none;"><span class="ico sm i-logout"></span>登出</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>

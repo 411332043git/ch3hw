@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>好多人入口</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="macaron.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+</style>
+</helmet>
+<div class="app theme-{{theme}}">
+  <div class="row gap8" style="padding: 14px 16px 0;">
+    <a class="btn-ico" href="Visitor.dc.html" aria-label="回上一頁" style="text-decoration: none;"><span class="ico i-left"></span></a>
+    <span class="grow"></span>
+  </div>
+
+  <div class="col gap4" style="padding: 8px 20px 0;">
+    <h1 class="title">進入「好多人」</h1>
+    <p class="p muted small">只要輸入一個匿名名稱，就能進去聊天</p>
+  </div>
+
+  <div class="card sky row gap16" style="margin: 12px 16px 0; padding: 12px 16px;">
+    <span class="av xl a4" style="width: 76px; height: 76px; font-size: 40px;"><i class="an an-crab"></i></span>
+    <div class="col grow gap4">
+      <span class="tiny muted bold">你的樣子</span>
+      <span class="h2 nowrap">小米</span>
+      <button class="link" style="text-align: left; padding: 0; min-height: 28px; font-size: 13px;">改回內建頭像</button>
+    </div>
+  </div>
+
+  <div class="col gap12" style="padding: 14px 16px 0;">
+    <div class="field">
+      <label class="label" for="nick">匿名名稱<span class="tiny muted">4 / 20</span></label>
+      <input class="input err" id="nick" value="小米" aria-describedby="nick-err">
+      <span class="msg-err" id="nick-err"><span class="ico sm i-info"></span>這個名字已經有人用囉，換一個吧</span>
+      <span class="hint">可以用中文、英文、數字、emoji 和空格</span>
+    </div>
+
+    <div class="field">
+      <span class="label">選一個頭像</span>
+      <div class="row gap8" style="overflow-x: auto; padding: 6px 4px 8px; scrollbar-width: none;">
+        <button class="av-pick on" aria-label="小螃蟹"><span class="av a1"><i class="an an-crab"></i></span></button>
+        <button class="av-pick" aria-label="大象"><span class="av a2"><i class="an an-elephant"></i></span></button>
+        <button class="av-pick" aria-label="小雞"><span class="av a3"><i class="an an-chick"></i></span></button>
+        <button class="av-pick" aria-label="北極熊"><span class="av a4"><i class="an an-polarbear"></i></span></button>
+        <button class="av-pick" aria-label="貓"><span class="av a5"><i class="an an-cat"></i></span></button>
+        <button class="av-pick" aria-label="鯊魚"><span class="av a6"><i class="an an-shark"></i></span></button>
+        <button class="av-pick" aria-label="兔子"><span class="av a7"><i class="an an-rabbit"></i></span></button>
+      </div>
+      <div class="row gap8">
+        <a class="btn sm ghost grow" href="Cropper.dc.html" style="text-decoration: none;"><span class="ico sm i-image"></span>相簿</a>
+        <a class="btn sm ghost grow" href="Camera.dc.html" style="text-decoration: none;"><span class="ico sm i-camera"></span>拍照</a>
+        <button class="btn sm yellow grow"><span class="ico sm i-trash"></span>刪除我的照片</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grow"></div>
+  <div style="padding: 0 16px 20px;">
+    <button class="btn block">進入聊天室<span class="ico sm i-right"></span></button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["pink","night"],"default":"pink","section":"主題"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'pink' };
+  }
+}
+</script>
+</body>
+</html>
