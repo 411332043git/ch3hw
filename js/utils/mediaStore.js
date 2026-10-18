@@ -1,6 +1,8 @@
 /* 階段一：圖片、語音、影片、檔案的內容放在瀏覽器的 IndexedDB（localStorage 容量太小）。
    訊息裡只記「檔案編號」。階段二會換成 Supabase Storage 的網址，畫面不用改（畫面只呼叫 mediaUrl）。 */
 
+import { config } from '../config.js';
+
 const DB_NAME = 'ch3hw-media';
 const STORE = 'blobs';
 let dbPromise = null;
@@ -59,6 +61,10 @@ export async function deleteMedia(id) {
 /* 取得可以放進 <img>、<video>、<audio> 的網址；找不到檔案回傳 null */
 export async function mediaUrl(id) {
   if (!id) return null;
+  // 階段二：檔案編號就是 Storage 裡的路徑（含 /），直接換成公開網址
+  if (config.backend === 'supabase' && String(id).includes('/')) {
+    return `${config.supabase.url}/storage/v1/object/public/chat-images/${String(id).split('/').map(encodeURIComponent).join('/')}`;
+  }
   if (urlCache.has(id)) return urlCache.get(id);
   const b = await getMedia(id);
   if (!b) return null;

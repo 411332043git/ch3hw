@@ -45,3 +45,10 @@
 ## 階段二
 
 只要新寫 `js/services/supabaseService.js`（照 `js/services/chatService.js` 的合約），再把 `js/config.js` 的 `backend` 改成 `supabase`。畫面不用動。金鑰只留在本機，永遠不進 git（見 `CLAUDE.md`）。
+
+
+## 階段二（接上 Supabase）
+
+- `js/config.js` 的 `backend` 預設是 `supabase`；網址加上 `?backend=mock` 可以回到示範模式。
+- 資料庫設定腳本在 `supabase/`，執行方式見 `supabase/SETUP.md`。
+- 定時敲門在 `.github/workflows/keep-alive.yml`，需要 repo 的 Variables：`SUPABASE_URL`、`SUPABASE_PUBLISHABLE_KEY`（都是可以公開的值）。

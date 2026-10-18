@@ -45,7 +45,15 @@ class Store extends Emitter {
     this.service = service;
     const on = (ev, fn) => service.on(ev, fn);
 
-    on('connection:changed', ({ status }) => { this.connection = status; this.emit('connection'); });
+    on('connection:changed', ({ status }) => {
+      const was = this.connection;
+      this.connection = status;
+      this.emit('connection');
+      // 斷線後恢復：把已經打開的房間重新載入，補上斷線期間漏掉的訊息、收回與表情
+      if (status === 'connected' && was !== 'connected') {
+        Object.values(this.rooms).filter((r) => r.loaded).forEach((r) => this.loadRoom(r.id).catch(() => {}));
+      }
+    });
     on('presence:sync', ({ users }) => { this.presence = users; this.emit('presence'); });
     on('presence:joined', ({ user }) => {
       if (user.userId === this.userId) return;
@@ -59,12 +67,13 @@ class Store extends Emitter {
       this.emit('presence');
     });
     on('avatar:removed', ({ userId }) => {
-      const fix = (o) => { if (o.userId === userId && String(o.avatar).startsWith('media:')) o.avatar = DEFAULT_AVATAR; };
+      const isPhoto = (a) => /^media:|\/storage\/v1\/object\/public\/avatars\//.test(String(a));
+      const fix = (o) => { if (o.userId === userId && isPhoto(o.avatar)) o.avatar = DEFAULT_AVATAR; };
       Object.values(this.rooms).forEach((r) => r.messages.forEach(fix));
       this.presence.forEach(fix);
       if (userId === this.userId) {
-        if (this.profile && String(this.profile.avatar).startsWith('media:')) this.setProfile({ ...this.profile, avatar: DEFAULT_AVATAR });
-        if (this.dmProfile && String(this.dmProfile.avatar).startsWith('media:')) this.setDmProfile({ ...this.dmProfile, avatar: DEFAULT_AVATAR });
+        if (this.profile && isPhoto(this.profile.avatar)) this.setProfile({ ...this.profile, avatar: DEFAULT_AVATAR });
+        if (this.dmProfile && isPhoto(this.dmProfile.avatar)) this.setDmProfile({ ...this.dmProfile, avatar: DEFAULT_AVATAR });
       }
       this.emit('avatars');
     });
@@ -128,7 +137,20 @@ class Store extends Emitter {
       this.emit('dm:removed', roomId);
     });
     on('auth:changed', ({ role }) => { this.role = role; this.emit('auth'); });
-    on('media:expired', () => this.emit('media'));
+    on('media:expired', (d) => {
+      // 過了期限的檔案：訊息標成已過期（設為公告的不過期）；手動刪除的，只標那一則
+      const now = Date.now();
+      Object.values(this.rooms).forEach((r) => {
+        const days = r.id === config.groupRoomId ? config.expireDays.group : config.expireDays.dm;
+        r.messages.forEach((m) => {
+          if (m.expired) return;
+          if (d && d.messageId) { if (m.id === d.messageId) m.expired = true; return; }
+          const has = (m.images && m.images.length) || m.file || m.voice || m.video;
+          if (has && !m.announced && !m.recalled && now - Date.parse(m.createdAt) > days * 86400000) m.expired = true;
+        });
+      });
+      this.emit('media');
+    });
     on('owner:profile', ({ profile }) => { this.ownerProfile = profile; this.emit('ownerprofile'); });
     /* 「刪除」只有我這邊：訊息或悄悄話結束的小字，key 是訊息編號或 seg:分段編號 */
     const target = (roomId, key) => {

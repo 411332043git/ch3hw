@@ -2,11 +2,11 @@
    階段二才需要填 Project URL 與 Publishable key（絕對不要放 Secret key、資料庫密碼、站長密碼）。 */
 export const config = {
   /* 'mock'＝階段一示範版；階段二改成 'supabase' */
-  backend: 'mock',
+  backend: new URLSearchParams(location.search).get('backend') === 'mock' ? 'mock' : 'supabase', // 網址加上 ?backend=mock 可以回到示範模式
 
   supabase: {
-    url: '',
-    publishableKey: '',
+    url: 'https://whzwvcnlnrxepdskaxwk.supabase.co',
+    publishableKey: 'sb_publishable_vIDArMcpgH_fOmTfIuwPuA_mu4O-jiL',
   },
 
   /* 「好多人」房間固定的編號 */

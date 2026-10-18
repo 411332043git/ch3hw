@@ -20,7 +20,9 @@ const root = document.getElementById('root');
 async function createService() {
   if (config.backend === 'supabase') {
     const m = await import('./services/supabaseService.js');
-    return new m.SupabaseService();
+    const svc = new m.SupabaseService();
+    await svc.init();
+    return svc;
   }
   const m = await import('./services/mockService.js');
   return new m.MockService();
