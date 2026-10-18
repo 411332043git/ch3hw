@@ -1,0 +1,264 @@
+/* 重設與共用樣式：版面骨架、彈出層、響應式。顏色與元件樣式在 theme-*.css 與 components.css。 */
+
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: var(--cream, #FFF8EE);
+  color: var(--ink, #5B4234);
+  font-family: var(--font, "Nunito", system-ui, sans-serif);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+body.modal-open { overflow: hidden; }
+button { font-family: inherit; }
+a { color: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid var(--accent-deep, #E8789A); outline-offset: 2px; }
+button:disabled { cursor: not-allowed; }
+
+/* ───────── 畫面骨架 ───────── */
+#root { min-height: 100vh; min-height: 100dvh; }
+#root > .app {
+  width: 100%;
+  max-width: 560px;
+  height: var(--app-h, 100dvh);
+  margin: 0 auto;
+}
+#root > .app.page { overflow-y: auto; overflow-x: hidden; }
+.app.page > * { flex-shrink: 0; }
+.app.page > .grow { flex: 1 0 auto; min-height: 8px; }
+button.card, button.choice { font: inherit; color: inherit; text-align: left; cursor: pointer; width: 100%; }
+.landing .hero { position: relative; height: 210px; width: 358px; max-width: calc(100% - 32px); margin: 26px auto 0; flex: none; }
+.landing .hero .abs { position: absolute; display: inline-flex; }
+.landing .hero .blob { position: absolute; border-radius: 50%; }
+.landing .hero .big { width: 112px; height: 112px; font-size: 60px; }
+.landing .choices { padding: 52px 16px 0; }
+.landing .owner-av { width: 60px; height: 60px; background: #FFE3EA; }
+.demo-bar {
+  flex: none; display: flex; gap: 6px; align-items: center; justify-content: center;
+  padding: 4px 12px; font-size: 11.5px; font-weight: 700; color: var(--muted);
+  background: #FFF6D6; border-bottom: 1.5px solid #F5E08B;
+}
+.theme-night .demo-bar { background: #3A3656; border-color: #5A557A; color: #C9BFD9; }
+
+/* ───────── 聊天室骨架 ───────── */
+.app.chat { flex-direction: row; }
+.app.chat .side { display: none; }
+.app.chat .main { flex: 1; min-width: 0; display: flex; flex-direction: column; height: 100%; position: relative; }
+.tabs-slot { flex: none; }
+.view-slot { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.room-view { flex: 1; min-height: 0; display: flex; flex-direction: column; position: relative; }
+.msgs-wrap { flex: 1; min-height: 0; position: relative; display: flex; flex-direction: column; }
+.msgs.scrolly { flex: 1; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scroll-behavior: auto; }
+.msgs-wrap .newbtn { bottom: 12px; }
+.room-header, .inbox-header { flex: none; }
+.empty-pane { flex: 1; }
+.topbar .back-btn { flex: none; }
+.topbar.grp { background: #E6F7EE; border-color: #BFE6D3; }
+.card.grp { background: #E6F7EE; border-color: #BFE6D3; margin: 10px 14px 0; padding: 8px 14px; border-radius: 24px; }
+.theme-night .topbar.grp, .theme-night .card.grp { background: #3A3656; border-color: #5A557A; }
+.online-slot { flex: none; }
+.online-list.in-header { max-height: 38vh; overflow-y: auto; }
+
+@media (min-width: 900px) {
+  #root > .app.chat { max-width: 1240px; padding: 20px 28px; gap: 20px; }
+  .app.chat .side {
+    display: flex; flex-direction: column; flex: none; width: 280px; gap: 10px; padding: 16px;
+    border-radius: 30px; background: var(--card); border: 2px solid var(--line); box-shadow: var(--shadow);
+    overflow-y: auto; min-height: 0;
+  }
+  .app.chat .side[data-kind="inbox"] { width: 360px; padding: 12px; }
+  .app.chat .side[data-kind="none"] { display: none; }
+  .app.chat .main {
+    border-radius: 30px; overflow: hidden; background: rgba(255, 253, 249, .6);
+    border: 2px solid var(--line); box-shadow: var(--shadow);
+  }
+  .theme-night .app.chat .main { background: rgba(62, 58, 85, .5); }
+  .app.chat:not(.dm-tab):not(.side-collapsed) .main,
+  .app.chat.no-side .main { max-width: 760px; margin: 0 auto; }
+  .app.chat.side-collapsed .side { width: 64px; padding: 12px 6px; align-items: center; }
+  .app.chat.side-collapsed .side > :not(.rail) { display: none; }
+  .app.chat.side-collapsed .main { max-width: none; margin: 0; }
+  .rail { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .online-list.in-header { display: none; }
+  .online-btn .ico { display: none; }
+}
+@media (max-width: 899px) {
+  .rail { display: none; }
+}
+
+/* ───────── 彈出層 ───────── */
+.toasts {
+  position: fixed; left: 0; right: 0; bottom: 92px; z-index: 90; display: flex; flex-direction: column;
+  align-items: center; gap: 8px; pointer-events: none; padding: 0 16px;
+}
+.overlay {
+  position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; padding: 20px;
+  background: rgba(91, 66, 52, .38);
+}
+.overlay .modal { width: min(380px, 100%); }
+.overlay.sheet-host { place-items: end center; padding: 0; }
+.overlay .sheet { position: relative; left: auto; right: auto; bottom: auto; width: 100%; max-width: 560px; }
+.fullscreen { position: fixed; inset: 0; z-index: 60; background: var(--cream); display: flex; justify-content: center; overflow-y: auto; }
+.fullscreen .fs-inner { width: 100%; max-width: 560px; min-height: 100%; display: flex; flex-direction: column; position: relative; }
+.fullscreen.lightbox { background: rgba(74, 54, 42, .5); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.lightbox .fs-inner { height: 100%; }
+.lb-head { padding: 14px 16px 0; align-items: center; }
+.lb-body { display: flex; align-items: center; justify-content: center; position: relative; min-height: 0; padding: 14px; }
+.lb-media { display: flex; align-items: center; justify-content: center; max-width: 100%; max-height: 100%; }
+.lb-el { max-width: 100%; max-height: 68vh; border-radius: 24px; border: 4px solid #FFFDF9; box-shadow: 0 24px 40px -14px rgba(0, 0, 0, .55); background: #000; }
+.lb-nav { position: absolute; top: 50%; margin-top: -23px; z-index: 2; }
+.lb-nav.prev { left: 8px; }
+.lb-nav.next { right: 8px; }
+.lb-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 16px 22px; }
+.menu-back { position: fixed; inset: 0; z-index: 79; }
+.pop-menu { position: fixed; right: auto; bottom: auto; z-index: 80; min-width: 190px; }
+.pop-menu.pickmenu { width: max-content; }
+.pop-menu .it { font: inherit; width: 100%; border: none; background: none; color: inherit; text-align: left; cursor: pointer; }
+.pop-menu .it .thm { margin-left: auto; }
+.emoji-panel { position: absolute; left: 12px; right: 12px; bottom: 100%; margin-bottom: 6px; z-index: 20; padding: 10px; max-width: 420px; }
+.announce-panel { position: absolute; left: 14px; right: 14px; top: 8px; z-index: 20; pointer-events: auto; padding: 14px; gap: 10px; border-radius: 28px; max-height: 70vh; overflow-y: auto; }
+.ann-item { background: var(--cream); border: 2px solid var(--line); font: inherit; color: inherit; cursor: pointer; width: 100%; }
+.ann-item.cur { background: #FFF6D6; border-color: #F5E08B; }
+.theme-night .ann-item.cur { background: #4A4466; border-color: #CDB8EE; }
+
+/* ───────── 訊息裡的圖片、影片、檔案 ───────── */
+.recall-row { display: flex; justify-content: center; }
+.sys.recall { cursor: pointer; }
+.sys.top-note { align-self: center; }
+.pic.one { width: auto; height: auto; background: none; display: inline-block; margin-top: 8px; max-width: 100%; }
+.bubble.imgonly .pic.one { margin-top: 0; }
+.pic.one img { display: block; width: 210px; max-width: 100%; height: auto; max-height: 280px; object-fit: cover; border-radius: 14px; cursor: zoom-in; background: #F3EBE3; }
+.img-grid { display: grid; gap: 4px; margin-top: 8px; }
+.bubble.imgonly .img-grid { margin-top: 0; }
+.img-grid.g2 { grid-template-columns: repeat(2, 104px); }
+.img-grid.g3 { grid-template-columns: repeat(3, 72px); }
+.img-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; cursor: zoom-in; background: #F3EBE3; }
+.pic.vid { cursor: pointer; overflow: hidden; background: #E8D5C4; }
+.pic.vid .vposter { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.pic.vid:not(:has(img[src])) { background: linear-gradient(135deg, #CFE6FA, #FFD3DF); }
+.media-missing { padding: 6px 4px; }
+.photo-av img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.photo-av img.is-missing { display: none; }
+.flash .bubble { animation: flash 1.6s ease; }
+@keyframes flash { 0%, 100% { box-shadow: var(--shadow-soft); } 30% { box-shadow: 0 0 0 5px var(--accent), var(--shadow-soft); } }
+
+/* ───────── 輸入區 ───────── */
+.textarea textarea.ta {
+  flex: 1; min-width: 0; border: none; background: none; outline: none; resize: none; font: inherit;
+  color: inherit; line-height: 1.4; padding: 0; margin: 0; max-height: 130px; overflow-y: auto; align-self: center;
+}
+.textarea textarea.ta::placeholder { color: #B09A8B; }
+.textarea { padding-top: 11px; padding-bottom: 11px; }
+.btn-ico:disabled { opacity: .55; }
+.btn-ico.send .cd { font-weight: 800; font-size: 18px; }
+.attach .th .pic { display: block; background: #F3EBE3; overflow: hidden; }
+.attach .th .pic img { width: 100%; height: 100%; object-fit: cover; }
+.attach .th .x { cursor: pointer; padding: 0; }
+.attach .th .pic.vid { position: relative; }
+.rec-wave i { animation: wv .9s ease-in-out infinite alternate; transform-origin: center; }
+@keyframes wv { from { transform: scaleY(.35); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { .rec-wave i { animation: none; } }
+input[type="range"].range { appearance: auto; accent-color: var(--accent-deep); }
+.input[type="search"]::-webkit-search-cancel-button { display: none; }
+.ap-slot { flex: none; }
+.dm-row { font: inherit; color: inherit; width: 100%; }
+.settings-body .set-row .sw { flex: none; }
+.dev { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-top: 2px dashed var(--line); }
+
+/* 觸控目標至少約 44 像素 */
+.btn-ico, .tab, .tab-toggle, .seg-tab, .link, .av-pick { min-height: 44px; }
+.btn-ico.sm { min-height: 40px; min-width: 40px; }
+.in-emoji { min-height: 30px; }
+
+@media (min-width: 900px) {
+  .app.chat .room-header .back-btn { display: none; }
+}
+
+/* 頭像挑選列：可以左右滑動，電腦有箭頭和滾輪 */
+.avatar-picker, .avatar-picker .field, .ap-slot { min-width: 0; max-width: 100%; }
+.ap-scroll { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.ap-scroll .ap-row { flex: 1; min-width: 0; }
+.ap-row { display: flex; overflow-x: auto; overflow-y: hidden; padding: 12px 14px 14px; -webkit-overflow-scrolling: touch; touch-action: pan-x; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: var(--accent-deep) var(--line); }
+.ap-row::-webkit-scrollbar { display: block; height: 10px; }
+.ap-row::-webkit-scrollbar-track { background: var(--line); border-radius: 999px; }
+.ap-row::-webkit-scrollbar-thumb { background: var(--accent-deep); border-radius: 999px; border: 2px solid var(--line); }
+.ap-row .av-pick { flex: none; }
+.ap-arrow { flex: none; background: var(--card); }
+@media (hover: none) { .ap-arrow { display: none; } }
+
+/* 手機：長按訊息時不要變成選文字，整個訊息框亮起來並跳出選單 */
+@media (hover: none) {
+  .msg .bubble, .sys.recall { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  .msgs { -webkit-touch-callout: none; }
+}
+.bubble.pressed { box-shadow: 0 0 0 4px var(--accent), var(--shadow-soft); transform: scale(1.02); transition: transform .12s ease; }
+.sys.recall.pressed { box-shadow: 0 0 0 3px var(--accent); }
+
+
+/* 手機（觸控裝置）不顯示輸入框旁的笑臉：網頁沒辦法替手機切到 Emoji 鍵盤 */
+@media (hover: none) { .in-emoji { display: none; } }
+
+/* 手機的傳檔案鈕：橘色（跟小選單裡的「傳檔案」同色） */
+.btn-ico.c-file { background: #FFC7A3; border-color: rgba(91, 66, 52, .14); box-shadow: 0 4px 0 rgba(238, 148, 97, .5), 0 8px 12px -8px rgba(168, 112, 82, .3); }
+
+/* 已登入的裝置：瀏覽器與系統的小圖示 */
+.dev-bg { width: auto; min-width: 44px; padding: 0 10px; }
+.dev-logos { display: inline-flex; align-items: center; gap: 6px; }
+.dev-logo { display: block; flex: none; }
+
+/* 刪除（只有我這邊）留下的痕跡，和悄悄話結束的小字 */
+.sys.deleted { cursor: pointer; opacity: .85; }
+button.sys.end { font-family: inherit; cursor: default; }
+
+/* 手機：長按小字（悄悄話結束、這邊刪除過、收回…）也不要變成選文字，改成整個小字亮起來並跳出選單 */
+@media (hover: none) {
+  .sys, button.sys, .recall-row, .msgs .sys * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  button.sys { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+}
+.sys.pressed { box-shadow: 0 0 0 3px var(--accent); background: var(--card); transform: scale(1.04); transition: transform .12s ease; }
+
+/* 左右滑動露出按鈕（對話列表往右滑、公告往左滑） */
+.swipe-wrap { position: relative; border-radius: 24px; }
+.swipe-wrap .swipe-body { position: relative; z-index: 1; touch-action: pan-y; width: 100%; }
+.swipe-actions { position: absolute; top: 0; bottom: 0; left: 0; display: flex; align-items: stretch; gap: 6px; padding: 2px; z-index: 0; }
+.swipe-actions.right { left: auto; right: 0; }
+.swipe-act { appearance: none; border: 2px solid rgba(91, 66, 52, .14); border-radius: 20px; min-width: 62px; padding: 0 8px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font: inherit; font-size: 12px; font-weight: 800; color: #4A362A; cursor: pointer; }
+.swipe-act:active { transform: scale(.94); }
+.swipe-act.a-pin { background: #FFE27A; }
+.swipe-act.a-mute { background: #CFE6FA; }
+.swipe-act.a-block { background: #FFC9CE; }
+.swipe-act.a-del { background: #FFC9CE; min-width: 72px; }
+.theme-night .swipe-act.a-pin { background: #FFE27A; }
+.dm-row.pressed, .ann-item.pressed { box-shadow: 0 0 0 4px var(--accent), var(--shadow-soft); }
+.count.muted-count { background: var(--line-strong); color: var(--ink); }
+@media (hover: none) { .swipe-body, .ann-item { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; } }
+.swipe-wrap { overflow-x: clip; }
+.owner-inbox { overflow-x: hidden; }
+
+/* 滑出來的按鈕只有圖案 */
+.swipe-act { min-width: 48px; padding: 0 6px; }
+.swipe-act .ico { width: 24px; height: 24px; }
+.swipe-act.a-del { min-width: 48px; }
+
+/* 訊息裡的連結 */
+.msg-link { color: var(--blue-deep, #5E9FD4); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; word-break: break-all; }
+.msg.me .msg-link { color: #4A6FA5; }
+.theme-night .msg-link { color: #A9D5F7; }
+.theme-night .msg.me .msg-link { color: #3A4A8A; }
+
+.overlay .modal.dm-profile { gap: 12px; }
+
+/* 頭像挑選列：放大，一排剛好看到五個（其他的往旁邊滑） */
+.ap-row { gap: 8px; padding: 12px 14px 14px; }
+.ap-row .av-pick { flex: 0 0 calc((100% - 32px) / 5); width: calc((100% - 32px) / 5); height: auto; aspect-ratio: 1; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+.ap-row .av-pick .av { width: 100%; height: auto; aspect-ratio: 1; }
+.ap-row .av-pick .av .an { width: 82%; height: 82%; }
+.ap-row .av-pick .av.photo-av { width: 100%; }
+.ap-all { flex: none; min-width: 56px; padding: 0 14px; }
+/* 看全部小動物 */
+.all-avatars .fs-inner { padding-bottom: 24px; }
+.all-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 8px; padding: 14px 16px 24px; }
+.all-item { appearance: none; border: none; background: none; display: flex; flex-direction: column; align-items: center; gap: 6px; font: inherit; color: inherit; cursor: pointer; padding: 6px 0; border-radius: 22px; }
+.all-item.on { background: var(--accent-soft); box-shadow: inset 0 0 0 3px var(--accent-deep); }
+.all-item:active { transform: scale(.95); }

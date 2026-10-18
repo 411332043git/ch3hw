@@ -1,0 +1,77 @@
+/* 「星夜」深色主題：顏色變數與各處覆蓋 */
+.theme-night {
+  --cream: #2F2B3F;
+  --card: #3E3A55;
+  --line: #5A557A;
+  --line-strong: #6D6890;
+  --ink: #FFF3E6;
+  --muted: #C9BFD9;
+  --shadow: 0 10px 22px -8px rgba(0, 0, 0, .45), 0 2px 0 rgba(255, 255, 255, .06) inset;
+  --shadow-soft: 0 6px 14px -6px rgba(0, 0, 0, .4);
+  --accent: #CDB8EE;
+  --accent-soft: #4A4466;
+  --accent-deep: #CDB8EE;
+  --second: #A9D5F7;
+  --second-soft: #3A4A66;
+  --me-bg: #CDB8EE;
+  --bar: #4A4466;
+  --dot: #6D6890;
+}
+
+.theme-pink .tt .tt-pink, .theme-night .tt .tt-blue { border-color: var(--ink); box-shadow: 0 3px 0 rgba(91, 66, 52, .25); }
+.theme-pink .tt.mode button:not(.on), .theme-night .tt.mode button:not(.on) { border-color: var(--ink); box-shadow: 0 3px 0 rgba(91, 66, 52, .25); opacity: .45; }
+/* ───────── 星夜（深色主題）：粉彩色當亮點，粉彩底上的字固定用深棕色 ───────── */
+.theme-night .btn:not(.ghost), .theme-night .btn-ico.c-blue, .theme-night .btn-ico.c-yellow, .theme-night .btn-ico.c-pink, .theme-night .btn-ico.pink, .theme-night .chip, .theme-night .count, .theme-night .vplay,
+.theme-night .msg.me .bubble, .theme-night .mode.on, .theme-night .seg-tab.on, .theme-night .cat.on, .theme-night .toast,
+.theme-night .sys.date, .theme-night .newbtn, .theme-night .rx.on, .theme-night .tab.on, .theme-night .tab-toggle,
+.theme-night .bar, .theme-night .card.yellow, .theme-night .card.sky, .theme-night .card.rose, .theme-night .card.mint,
+.theme-night .in-emoji, .theme-night .menu .it:hover, .theme-night .tip.under.pink, .theme-night .tip.under.yellow { color: #4A362A; }
+.theme-night .card.yellow .muted, .theme-night .card.sky .muted, .theme-night .card.rose .muted, .theme-night .bar .muted { color: #86695A; }
+.theme-night .tabs { background: #3A3656; border-color: #5A557A; }
+.theme-night .tab { color: #FFF3E6; }
+.theme-night .tab.on { background: #CDB8EE; }
+.theme-night .tab-toggle { background: #CDB8EE; }
+.theme-night .tab-toggle.open { background: #B9A2E6; }
+.theme-night .tabs.dm, .theme-night .topbar.dm { background: #4A3A48; border-color: #7A5A70; }
+.theme-night .tabs.dm .tab-toggle, .theme-night .tab.on.dm { background: #FFBBCE; }
+.theme-night .tabs.dm .tab-toggle.open { background: #FF9FBB; }
+.theme-night .tab.on.dm { box-shadow: 0 3px 0 rgba(255, 159, 187, .5); }
+.theme-night .btn-ico.c-blue { background: #A8E6CF; box-shadow: 0 4px 0 rgba(127, 209, 176, .55); }
+.theme-night .vplay { background: #A9D5F7; box-shadow: 0 4px 0 rgba(94, 159, 212, .5); }
+.theme-night .btn-ico.c-yellow { background: #FFE27A; }
+.theme-night .btn-ico.c-pink, .theme-night .btn.c-pinkbtn { background: #FFC7A3; box-shadow: 0 4px 0 rgba(238, 148, 97, .55); }
+.theme-night .in-emoji { background: #FFBBCE; }
+.theme-night .in-emoji:hover { background: #FF9FBB; }
+.theme-night .wave i.done, .theme-night .progress i { background: #A9D5F7; }
+.theme-night .textarea { background: #3E3A55; color: #FFF3E6; border-color: #5A557A; }
+.theme-night .composer { background: rgba(47, 43, 63, .92); }
+.theme-night .tip, .theme-night .tip.under { background: #6B5A8E; color: #FFF3E6; }
+.theme-night .tip::after, .theme-night .tip.under::after { background: #6B5A8E; }
+.theme-night .tip.under.pink { background: #FFBBCE; }
+.theme-night .tip.under.pink::after { background: #FFBBCE; }
+.theme-night .tip.under.yellow { background: #FFE27A; }
+.theme-night .tip.under.yellow::after { background: #FFE27A; }
+.theme-night .sys { background: rgba(62, 58, 85, .85); color: #C9BFD9; }
+.theme-night .flower-btn { background: #2B3A5C; border-color: #4A5C86; }
+.theme-night .flower-btn.open { background: #5A4F7A; border-color: #CDB8EE; }
+.theme-night .msg:not(.me) .bubble { background: #2B3A5C; border-color: #4A5C86; }
+.theme-night .bubble.voice.expired, .theme-night .bubble.gone { background: #3A3656; color: #C9BFD9; }
+/* 星夜：更多顏色當點綴 */
+.theme-night .topbar:not(.dm) { background: #3B2F63; border-color: #5B47A0; }
+.theme-night .tt { background: #2B3A5C; border-color: #4A5C86; }
+.theme-night .dot { background: #5CC8C8; }
+.theme-night .count { background: #FF8FA3; }
+.theme-night .tab .pip { background: #F5C84B; border-color: #3A3656; }
+.theme-night .rx.on, .theme-night .rxe.on { background: #5B47A0; }
+.theme-night .me-ring { box-shadow: 0 0 0 3px #9C84E0, 0 4px 8px -3px rgba(0, 0, 0, .4); }
+.theme-night .chip.mint { background: #A6EDEA; }
+
+/* 晚上版的小標籤：每種顏色換成亮一點的粉彩，字用咖啡棕 */
+.theme-night .chip.pink { background: #FFBBCE; }
+.theme-night .chip.yellow { background: #FFE27A; }
+.theme-night .chip.blue { background: #A9D5F7; }
+.theme-night .chip.peach { background: #FFC7A3; }
+.theme-night .chip.line { background: transparent; color: #FFF3E6; border-color: #6D6890; }
+.theme-night .chip:not(.pink):not(.yellow):not(.blue):not(.peach):not(.mint):not(.line) { background: #6D6890; color: #FFF3E6; }
+.theme-night .seg { background: rgba(62, 58, 85, .55); }
+.theme-night .seg-label { color: #4A362A; }

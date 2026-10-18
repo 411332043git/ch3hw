@@ -1,0 +1,32 @@
+/* 「馬卡龍」主題（預設，淺色）：顏色變數 */
+.theme-macaron, .theme-night {
+  --font: "naikaifont", "Nunito", "Hiragino Maru Gothic ProN", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --cream: #FFF8EE;
+  --card: #FFFDF9;
+  --line: #EBD9C6;
+  --line-strong: #DCC3AA;
+  --ink: #5B4234;
+  --muted: #86695A;
+  --yellow: #FFF0B3;
+  --yellow-deep: #EFC94F;
+  --mint: #CDF0E1;
+  --mint-deep: #3E9C7D;
+  --peach: #FFC7A3;
+  --peach-deep: #EE9461;
+  --pink: #FFD3DF;
+  --pink-deep: #E8789A;
+  --blue: #CFE6FA;
+  --blue-deep: #5E9FD4;
+  --shadow: 0 10px 22px -8px rgba(168, 112, 82, .32), 0 2px 0 rgba(255, 255, 255, .85) inset;
+  --shadow-soft: 0 6px 14px -6px rgba(168, 112, 82, .26);
+}
+.theme-macaron {
+  --accent: #FFBBCE;
+  --accent-soft: #FFE4EB;
+  --accent-deep: #E8789A;
+  --second: #CFE6FA;
+  --second-soft: #E9F3FD;
+  --me-bg: #FFD6E1;
+  --bar: #FFDCE6;
+  --dot: #F7DCCB;
+}
