@@ -41,7 +41,7 @@ export function avatarHtml(avatar, size = '', extra = '') {
   return `<span class="${cls}"><i class="an an-${name}"></i></span>`;
 }
 
-/* 只接受 http(s) 開頭的網址（目前只用在檢查用途；文字裡的網址不會變成連結） */
+/* 只接受 http(s) 開頭的網址（用來檢查網址是否安全；訊息文字裡的網址由 messageList.js 的 textHtml 轉成連結） */
 export function isSafeHttpUrl(u) {
   try {
     const x = new URL(u);

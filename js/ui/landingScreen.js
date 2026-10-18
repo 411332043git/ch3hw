@@ -36,7 +36,7 @@ export function landingScreen(ctx) {
         </span>
         <span class="col gap4">
           <span class="h2">訪客</span>
-          <span class="row gap6" style="margin-top:4px;"><span class="chip mint">好多人</span><span class="chip yellow">兩個人</span></span>
+          <span class="row gap6" style="margin-top:4px;"><span class="chip mint" data-room="group" role="link" tabindex="0">好多人</span><span class="chip yellow" data-room="dm" role="link" tabindex="0">兩個人</span></span>
         </span>
       </button>
       <button class="card yellow press row gap12 choice" data-go="owner">
@@ -51,6 +51,13 @@ export function landingScreen(ctx) {
     <div class="grow"></div>
     <p class="p tiny muted center" style="padding:0 24px 22px;">隨時可以從選單回到這裡</p>`;
   el.addEventListener('click', async (e) => {
+    // 卡片上的「好多人」「兩個人」標籤：直接進該聊天室
+    const chip = e.target.closest('[data-room]');
+    if (chip) {
+      try { await ctx.service.useVisitor(); await ctx.refreshSession(); } catch { /* 忽略 */ }
+      if (chip.dataset.room === 'group') ctx.enterGroup(); else ctx.enterDm();
+      return;
+    }
     const b = e.target.closest('[data-go]');
     if (!b) return;
     if (b.dataset.go === 'visitor') {
@@ -62,6 +69,9 @@ export function landingScreen(ctx) {
       try { await ctx.service.resumeOwner(); await ctx.afterOwnerLogin(); return; } catch { /* 失敗就改走登入 */ }
       ctx.go('ownerLogin');
     } else ctx.go('ownerLogin');
+  });
+  el.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-room]')) { e.preventDefault(); e.target.click(); }
   });
   return { el };
 }
