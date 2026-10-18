@@ -1,0 +1,13 @@
+{
+  "name": "ch3hw",
+  "version": "1.0.0",
+  "private": true,
+  "description": "好多人・兩個人 即時聊天室（前端放 GitHub Pages，即時傳訊用 Supabase）",
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "2.117.2"
+  },
+  "scripts": {
+    "start": "python dev-server.py"
+  }
+}
