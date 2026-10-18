@@ -1,4 +1,5 @@
 /* 聊天室主畫面（兩個房間共用）：分頁列、標題列、訊息、輸入區；電腦寬度時左邊多一欄（在線名單或站長的對話列表）。 */
+import { config } from '../config.js';
 import { store } from '../state/store.js';
 import { local } from '../utils/storage.js';
 import { createTabs, themeItem } from './roomTabs.js';
@@ -20,7 +21,7 @@ export function chatScreen(ctx, { tab = 'group' } = {}) {
   el.innerHTML = `
     <aside class="side" aria-label=""></aside>
     <section class="main">
-      <div class="demo-bar" role="note"><span class="ico sm i-info"></span>示範模式：訊息只存在你的瀏覽器</div>
+      ${config.backend === 'mock' ? '<div class="demo-bar" role="note"><span class="ico sm i-info"></span>示範模式：訊息只存在你的瀏覽器</div>' : ''}
       <div class="bar peach conn-bar" role="status" style="display:none;margin:6px 12px 0;font-size:13px;"><span class="ico sm i-wifioff"></span><span class="grow conn-text">連線中斷，重新連線中…</span></div>
       <div class="tabs-slot"></div>
       <div class="view-slot"></div>

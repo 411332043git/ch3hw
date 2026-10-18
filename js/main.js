@@ -160,6 +160,10 @@ async function boot() {
   } else if (store.lastTab === 'dm' && store.dmSession) {
     return ctx.openChat('dm');
   }
+  // 網址加 ?room=group 或 ?room=dm，直接進該聊天室（沒有暱稱／數字就到輸入畫面）
+  const room = new URLSearchParams(location.search).get('room');
+  if (room === 'group') return ctx.enterGroup();
+  if (room === 'dm') return ctx.enterDm();
   ctx.go('landing');
 }
 

@@ -1,8 +1,9 @@
 /* 第一個畫面：選身分（訪客 / 縵），以及訪客的兩個選項（好多人 / 兩個人） */
 import { avatarHtml } from '../utils/sanitize.js';
 import { store } from '../state/store.js';
+import { config } from '../config.js';
 
-const demoBar = `<div class="demo-bar" role="note"><span class="ico sm i-info"></span>示範模式：訊息只存在你的瀏覽器</div>`;
+const demoBar = config.backend !== 'mock' ? '' : `<div class="demo-bar" role="note"><span class="ico sm i-info"></span>示範模式：訊息只存在你的瀏覽器</div>`;
 
 export function landingScreen(ctx) {
   const el = document.createElement('div');
@@ -68,7 +69,6 @@ export function landingScreen(ctx) {
 export function visitorScreen(ctx) {
   const el = document.createElement('div');
   el.className = 'app page landing';
-  const online = 12;
   el.innerHTML = `
     ${demoBar}
     <div class="row gap8" style="padding:16px 16px 0;">
@@ -84,7 +84,7 @@ export function visitorScreen(ctx) {
             <span style="margin-left:-16px;display:inline-flex;">${avatarHtml('cat', 'lg')}</span>
           </span>
           <span class="grow"></span>
-          <span class="chip mint"><span class="dot"></span>${online} 人在線</span>
+          ${config.backend === 'mock' ? '<span class="chip mint"><span class="dot"></span>12 人在線</span>' : ''}
         </div>
         <div class="col gap4">
           <span class="title" style="font-size:26px;">好多人</span>

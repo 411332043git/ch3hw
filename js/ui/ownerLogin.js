@@ -1,4 +1,5 @@
 /* 站長登入、第一次建立帳號、「要記得這個裝置嗎」詢問（示範版：隨便輸入都能登入） */
+import { config } from '../config.js';
 import { esc, avatarHtml } from '../utils/sanitize.js';
 import { validateEmail } from '../utils/validators.js';
 import { confirmDialog } from './modal.js';
@@ -9,7 +10,7 @@ export function ownerLoginScreen(ctx) {
   el.className = 'app page';
   let mode = 'login';
   el.innerHTML = `
-    <div class="demo-bar" role="note"><span class="ico sm i-info"></span>示範模式：帳號密碼只記在這個瀏覽器裡</div>
+    ${config.backend === 'mock' ? '<div class="demo-bar" role="note"><span class="ico sm i-info"></span>示範模式：帳號密碼只記在這個瀏覽器裡</div>' : ''}
     <div class="row gap8" style="padding:14px 16px 0;">
       <button class="btn-ico" data-act="back" aria-label="回上一頁"><span class="ico i-left"></span></button>
       <span class="grow"></span>
